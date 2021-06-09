@@ -4,6 +4,8 @@
 
 ### Eclipse ###
 Servers
+.project
+.classpath
 .metadata
 bin/
 tmp/
