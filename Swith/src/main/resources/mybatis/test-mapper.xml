@@ -16,8 +16,8 @@
 	</select>
 
 	<insert id="insert" parameterType="testDto">
-		INSERT INTO EMP
-		VALUES(#{9999}, #{ename}, #{job}, #{mgr})
+		INSERT INTO EMP (EMPNO, ENAME, JOB, MGR)
+		VALUES(9999, #{ename}, #{job}, #{mgr})
 	</insert>
 
 

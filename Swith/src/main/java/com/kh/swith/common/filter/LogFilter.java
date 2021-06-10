@@ -57,7 +57,7 @@ public class LogFilter implements Filter {
 
 		logger.info("\nLOG Filter" + sb);
 
-		chain.doFilter(req, resp);
+		chain.doFilter(req, response);
 		// 다음에 존재하는 필터가 있으면, 그 필터가 실행될 수 있도록 chaining!
 		// request에 들어있는 정보를 읽어서 log.info한 것!
 

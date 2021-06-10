@@ -8,7 +8,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<!-- db.properties파일에서 정보 끌어옴 -->
-	<context:property-placeholder location="classpath:sqls/db.properties" />
+	<context:property-placeholder location="classpath:mybatis/db.properties" />
 
 	<!-- dataSource -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -16,10 +16,6 @@
 		<property name="url" value="${oracle.url}" />
 		<property name="username" value="${oracle.username}" />
 		<property name="password" value="${oracle.password}" />
-	</bean>
-
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<!-- mybatis -->
