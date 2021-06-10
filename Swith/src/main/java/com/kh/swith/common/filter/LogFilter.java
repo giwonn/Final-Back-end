@@ -48,6 +48,7 @@ public class LogFilter implements Filter {
 
 		HttpServletResponse resp = (HttpServletResponse) response;
 		// req.getHeader("Origin") -> http://localhost:3000
+		
 		resp.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
 	    resp.setHeader("Access-Control-Allow-Credentials", "true");
 		resp.setHeader("Access-Control-Allow-Methods", "GET, POST");
