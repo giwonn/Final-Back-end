@@ -17,7 +17,7 @@
 
 	<insert id="insert" parameterType="testDto">
 		INSERT INTO EMP (EMPNO, ENAME, JOB, MGR)
-		VALUES(9999, #{ename}, #{job}, #{mgr})
+		VALUES(9998, #{ename}, #{job}, #{mgr})
 	</insert>
 
 
