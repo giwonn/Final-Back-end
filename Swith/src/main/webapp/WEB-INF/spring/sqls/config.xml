@@ -4,10 +4,12 @@
 
 	<typeAliases>
 		<typeAlias type="com.kh.swith.test.dto.TestDto" alias="testDto" />
+		<typeAlias type="com.kh.swith.test.dto.TestDto" alias="calendarDto" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/mybatis/test-mapper.xml" />
+		<mapper resource="/mybatus/calendar-mapper.xml" />
 	</mappers>
 
 </configuration>
