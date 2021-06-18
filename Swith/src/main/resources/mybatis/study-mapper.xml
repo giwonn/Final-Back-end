@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+
+<mapper namespace="swith.studymapper">
+
+	<resultMap type="StudyDto" id="studyMap">
+		<result property="studygroupid" column="STUDY_GROUP_ID" />
+		<result property="studygroupname" column="STUDY_GROUP_NAME" />
+		<result property="studygroupdesc" column="STUDY_GROUP_DESC" />
+		<result property="studygroupoffline" column="STUDY_GROUP_OFFLINE" />
+		<result property="studygrouploc" column="STUDY_GROUP_LOC" />
+		<result property="studygroupaddrid" column="STUDY_GROUP_ADDR_ID" />
+		<result property="studygroupaddr" column="STUDY_GROUP_ADDR" />
+		<result property="studygrouppw" column="STUDY_GROUP_PW" />
+		<result property="studyusercnt" column="STUDY_USERCNT" />
+	</resultMap>
+
+	<insert id="insert" parameterType="StudyDto">
+		INSERT INTO STUDY_GROUP (
+			STUDY_GROUP_ID, 
+			STUDY_GROUP_NAME, 
+			STUDY_GROUP_DESC, 
+			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_LOC
+			<if test='studygroupaddrid != null and studygroupaddrid != "" and studygroupaddr != null and studygroupaddr != ""'>
+				,STUDY_GROUP_ADDR_ID, STUDY_GROUP_ADDR
+			</if>
+			<if test='studygrouppw != null and studygrouppw != ""'>			
+				,STUDY_GROUP_PW
+			</if>
+		)
+		VALUES (
+			STUDY_GROUP_SEQ.NEXTVAL, 
+			#{studygroupname}, 
+			#{studygroupdesc}, 
+			#{studygroupoffline},
+			#{studygrouploc}
+			<if test='studygroupaddrid != null and studygroupaddrid != "" and studygroupaddr != null and studygroupaddr != ""'>
+				, #{studygroupaddrid}
+				, #{studygroupaddr}
+			</if>
+			<if test='studygrouppw != null and studygrouppw != ""'>			
+				,#{studygrouppw}
+			</if>
+		)
+	</insert>
+	<select id="selectList" resultMap="studyMap">
+		SELECT 
+			STUDY_GROUP_ID, 
+			STUDY_GROUP_NAME, 
+			STUDY_GROUP_DESC, 
+			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_LOC,
+			STUDY_GROUP_ADDR_ID,
+			STUDY_GROUP_ADDR,
+			STUDY_GROUP_PW
+		FROM STUDY_GROUP
+		ORDER BY STUDY_GROUP_ID DESC
+	</select>
+
+
+
+</mapper>
+
