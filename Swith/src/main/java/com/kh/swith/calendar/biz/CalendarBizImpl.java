@@ -12,31 +12,31 @@ import com.kh.swith.calendar.dto.CalendarDto;
 public class CalendarBizImpl implements CalendarBiz {
 
 	@Autowired
-	private CalendarDao dao;
+	private CalendarDao calendarDao;
 	
 	@Override
 	public List<CalendarDto> selectList() {
-		return dao.selectList();
+		return calendarDao.selectList();
 	}
 
 	@Override
 	public CalendarDto selectOne(int calendar_id) {
-		return dao.selectOne(calendar_id);
+		return calendarDao.selectOne(calendar_id);
 	}
 
 	@Override
-	public int insert(CalendarDto dto) {
-		return dao.insert(dto);
+	public int insert(CalendarDto calendarDto) {
+		return calendarDao.insert(calendarDto);
 	}
 
 	@Override
-	public int update(CalendarDto dto) {
-		return dao.update(dto);
+	public int update(CalendarDto calendarDto) {
+		return calendarDao.update(calendarDto);
 	}
 
 	@Override
 	public int delete(int calendar_id) {
-		return dao.delete(calendar_id);
+		return calendarDao.delete(calendar_id);
 	}
 
 }

@@ -32,12 +32,12 @@ public class CalendarDaoImpl implements CalendarDao {
 	}
 
 	@Override
-	public int insert(CalendarDto dto) {
+	public int insert(CalendarDto calendarDto) {
 		return 0;
 	}
 
 	@Override
-	public int update(CalendarDto dto) {
+	public int update(CalendarDto calendarDto) {
 		return 0;
 	}
 
