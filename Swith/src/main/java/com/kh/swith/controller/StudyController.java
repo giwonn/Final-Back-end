@@ -48,13 +48,6 @@ public class StudyController {
 		Map resMap = new HashMap<String, String>();
 		
 		// TODO: 실패 성공시 HTTP 통신 코드 넣는 법 알아서 설정해놓기 
-		System.out.println(
-				"study group name = " + dto.getStudygroupname()
-				+"study group desc = " + dto.getStudygroupdesc()
-				+"study group offline = " + dto.getStudygroupoffline()
-				+"arrdid = " + dto.getStudygroupaddrid()
-				+"addr = " + dto.getStudygroupaddr()
-				+"studygrouppw = " + dto.getStudygrouppw());
 		
 		int res = biz.insertStudy(dto);
 		
