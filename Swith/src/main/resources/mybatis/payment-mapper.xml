@@ -23,7 +23,7 @@
 	</select>
 	
 	<!-- 날짜 제한 검색 기능 -->
-	<select id="selectDate" resultMap="paymentMap" paremeterType="PaymentDto">
+	<select id="selectDate" resultMap="paymentMap" parameterType="PaymentDto">
 	
 	</select>
 	  
