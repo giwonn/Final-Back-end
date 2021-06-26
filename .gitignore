@@ -7,7 +7,6 @@ Servers
 .project
 .classpath
 /Swith/target
-pom.properties
 .metadata
 bin/
 tmp/
