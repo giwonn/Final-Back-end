@@ -8,7 +8,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<!-- db.properties파일에서 정보 끌어옴 -->
-	<context:property-placeholder location="classpath:mybatis/db.properties" />
+	<context:property-placeholder location="classpath:config/*.properties" />
 
 	<!-- dataSource -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
