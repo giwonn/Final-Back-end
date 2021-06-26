@@ -19,10 +19,9 @@ public class MemberController {
 		
 		System.out.println(email);
 		
-		String res = "hi";
+		String res = "NotUser";
 		
 		
 		return res;
-	}
-	
+	}		
 }
