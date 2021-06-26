@@ -22,7 +22,12 @@
 	</beans:bean>
 	
 	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <beans:property name="location" value="classpath:mybatis/db.properties"/>
+		<beans:property name="locations">
+			<beans:list>
+				<beans:value>classpath:config/db.properties</beans:value>
+				<beans:value>classpath:config/config.properties</beans:value>
+			</beans:list>
+		</beans:property>
         <beans:property name="fileEncoding" value="UTF-8" />
     </beans:bean>
     
