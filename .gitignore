@@ -5,6 +5,8 @@
 ### Eclipse ###
 Servers
 .project
+.classpath
+/Swith/target
 .metadata
 bin/
 tmp/
