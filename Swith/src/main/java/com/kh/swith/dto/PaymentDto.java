@@ -1,5 +1,7 @@
 package com.kh.swith.dto;
 
+import java.util.Date;
+
 public class PaymentDto {
 	
 	private String paymentid;
