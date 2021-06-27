@@ -1,4 +1,4 @@
-package com.kh.swith.calendar.dto;
+package com.kh.swith.dto;
 
 import java.util.Date;
 
@@ -19,8 +19,8 @@ public class CalendarDto {
 	private int member_id;
 	private int study_group_id;
 	private String title;
-	private Date start_date;
-	private Date end_date;
-	private String description;
+	private Date start;
+	private Date end;
+	private String content;
 
 }

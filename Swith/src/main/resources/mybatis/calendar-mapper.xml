@@ -7,28 +7,23 @@
 		<result property="member_id" column="MEMBER_ID" />
 		<result property="study_group_id" column="STUDY_GROUP_ID" />
 		<result property="title" column="TITLE" />
-		<result property="start_date" column="START_DATE" />
-		<result property="end_date" column="END_DATE" />
-		<result property="description" column="DESCRIPTION" />
+		<result property="start" column="START_DATE" />
+		<result property="end" column="END_DATE" />
+		<result property="content" column="CONTENT" />
 	</resultMap>
 
 	<select id="selectList" resultMap="calendarMap">
-		SELECT CALENDAR_ID, MEMBER_ID, STUDY_GROUP_ID, TITLE, START_DATE, END_DATE, DESCRIPTION
+		SELECT CALENDAR_ID, MEMBER_ID, STUDY_GROUP_ID, TITLE, START, END, CONTENT
 		FROM CALENDAR
 		ORDER BY EMPNO DESC
 	</select>
 
 	<insert id="insert" parameterType="calendarDto">
 		INSERT INTO CALENDAR
-		VALUES(11, 11 ,11, "test", SYSDATE, SYSDATE, "test test")
+		VALUES(#{calendar_id}, #{member_id}, #{study_group_id}, #{title}, #{start}, #{end}, #{content})
 	</insert>
+	
+	
 
 
 </mapper>
-
-
-
-
-
-
-

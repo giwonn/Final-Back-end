@@ -10,7 +10,7 @@
 
 	<mappers>
 		<mapper resource="/mybatis/test-mapper.xml" />
-		<mapper resource="/mybatus/calendar-mapper.xml" />
+		<mapper resource="/mybatis/calendar-mapper.xml" />
 		<mapper resource="/mybatis/study-mapper.xml" />
 	</mappers>
 
