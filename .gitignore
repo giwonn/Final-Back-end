@@ -5,7 +5,6 @@
 ### Eclipse ###
 Servers
 .project
-.classpath
 .metadata
 bin/
 tmp/
@@ -14,7 +13,6 @@ tmp/
 *.swp
 *~.nib
 local.properties
-db.properties
 .settings/
 .loadpath
 .recommenders
@@ -99,4 +97,3 @@ hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java
 .DS_Store 
-config.properties
