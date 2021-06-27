@@ -11,7 +11,7 @@ public class PaymentDto {
 	private String paymentcontent;
 	private String paymentkinds;
 	// 아래는 날짜 제한 검색용
-	private Date firstdate;
-	private Date lastdate;
+	private Date startdate;
+	private Date enddate;
 	
 }

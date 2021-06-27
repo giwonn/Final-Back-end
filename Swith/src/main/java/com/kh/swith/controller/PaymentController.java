@@ -24,7 +24,7 @@ public class PaymentController {
 	
 	@RequestMapping(value="paymentInsert.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String savePaymentHistory(HttpSession session, @RequestBody PaymentDto dto) {
+	public String Insert(HttpSession session, @RequestBody PaymentDto dto) {
 		
 		
 		return "test";
