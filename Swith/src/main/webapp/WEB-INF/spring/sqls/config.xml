@@ -5,11 +5,13 @@
 	<typeAliases>
 		<typeAlias type="com.kh.swith.test.dto.TestDto" alias="testDto" />
 		<typeAlias type="com.kh.swith.test.dto.TestDto" alias="calendarDto" />
+		<typeAlias type="com.kh.swith.dto.StudyDto" alias="StudyDto" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/mybatis/test-mapper.xml" />
 		<mapper resource="/mybatus/calendar-mapper.xml" />
+		<mapper resource="/mybatis/study-mapper.xml" />
 	</mappers>
 
 </configuration>

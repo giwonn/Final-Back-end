@@ -8,7 +8,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<!-- db.properties파일에서 정보 끌어옴 -->
-	<context:property-placeholder location="classpath:mybatis/db.properties" />
+	<context:property-placeholder location="classpath:config/*.properties" />
 
 	<!-- dataSource -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -27,5 +27,11 @@
 	<!-- mybatis template -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSession" />
+	</bean>
+	<!-- multipart view resolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000" /> 
+		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 </beans>
