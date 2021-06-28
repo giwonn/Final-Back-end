@@ -22,5 +22,6 @@ public class CalendarDto {
 	private Date start;
 	private Date end;
 	private String content;
+	private Date regdate;
 
 }

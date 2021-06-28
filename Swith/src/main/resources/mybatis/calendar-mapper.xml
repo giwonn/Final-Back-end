@@ -10,17 +10,18 @@
 		<result property="start" column="START_DATE" />
 		<result property="end" column="END_DATE" />
 		<result property="content" column="CONTENT" />
+		<result property="regdate" column="REGDATE" />
 	</resultMap>
 
 	<select id="selectList" resultMap="calendarMap">
-		SELECT CALENDAR_ID, MEMBER_ID, STUDY_GROUP_ID, TITLE, START, END, CONTENT
+		SELECT CALENDAR_ID, MEMBER_ID, STUDY_GROUP_ID, TITLE, START_DATE, END_DATE, CONTENT, REGDATE
 		FROM CALENDAR
-		ORDER BY EMPNO DESC
+		ORDER BY CALENDAR_ID DESC
 	</select>
 
 	<insert id="insert" parameterType="calendarDto">
 		INSERT INTO CALENDAR
-		VALUES(#{calendar_id}, #{member_id}, #{study_group_id}, #{title}, #{start}, #{end}, #{content})
+		VALUES(CALENDARSEQ.NEXTVAL, #{member_id}, #{study_group_id}, #{title}, #{start}, #{end}, #{content}, SYSDATE)
 	</insert>
 	
 	

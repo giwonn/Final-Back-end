@@ -4,7 +4,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.kh.swith.test.dto.TestDto" alias="testDto" />
-		<typeAlias type="com.kh.swith.test.dto.TestDto" alias="calendarDto" />
+		<typeAlias type="com.kh.swith.dto.CalendarDto" alias="calendarDto" />
 		<typeAlias type="com.kh.swith.dto.StudyDto" alias="StudyDto" />
 	</typeAliases>
 
