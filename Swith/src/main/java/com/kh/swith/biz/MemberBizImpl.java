@@ -13,8 +13,8 @@ public class MemberBizImpl implements MemberBiz {
 	private MemberDao memberDao;
 
 	@Override
-	public String MemberSelect() {
-		return memberDao.MemberSelect();
+	public String MemberSelect(String email) {
+		return memberDao.MemberSelect(email);
 	}
 
 	@Override

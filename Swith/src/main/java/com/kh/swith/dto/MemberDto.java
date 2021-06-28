@@ -12,8 +12,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberDto {
-	
 	private String nickName;
 	private String phoneNumber;
 	private String intro;
+
 }
+
+

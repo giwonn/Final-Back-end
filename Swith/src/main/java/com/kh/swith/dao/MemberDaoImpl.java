@@ -13,12 +13,13 @@ public class MemberDaoImpl implements MemberDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public String MemberSelect() {
+	public String MemberSelect(String email) {
 		
 		String res = "";
 		
 		try {
-			res = "email";
+			// selectList , selectOne, insert , delete, update
+			res = sqlSession.selectOne("swith.membermapper.selectOne",email);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -35,7 +35,7 @@ public class MemberController {
 	@ResponseBody
 	public String InsertMember(@RequestBody MemberDto memberDto) {
 		
-		System.out.println("Test : " + memberDto);	
+		System.out.println("Test : " + memberDto.getNickName());	
 		
 //		if (memberBiz.MemberInsert(memberDto) > 0) {
 //			return "일정 등록 성공!";
