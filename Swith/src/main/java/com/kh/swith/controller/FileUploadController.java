@@ -32,9 +32,8 @@ public class FileUploadController {
 	@RequestMapping(value = "/image.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String uploadFile(HttpServletRequest request, MultipartFile file) throws Exception {
-		System.out.println(accessKey);
-		String originalFileName = file.getOriginalFilename();
-		byte[] fileData = file.getBytes(); // ======= ???? 이게 뭐지 아 모르겟다 
+		
+		String originalFileName = file.getOriginalFilename(); 
 		
 		// ========= 파일명 중복 방지 처리 ========= //
 		String uuidFileName = getUuidFileName(originalFileName);
