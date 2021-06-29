@@ -22,5 +22,5 @@ public class MemberBizImpl implements MemberBiz {
 		return memberDao.MemberInsert(memberDto);
 	}
 	
-
+	
 }
