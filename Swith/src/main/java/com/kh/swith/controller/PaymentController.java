@@ -22,12 +22,12 @@ public class PaymentController {
 	@Autowired
 	private PaymentDao dao;
 	
-	@RequestMapping(value="savePaymentHistory.do", method = RequestMethod.POST)
+	@RequestMapping(value="paymentInsert.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String savePaymentHistory(HttpSession session, @RequestBody PaymentDto dto) {
 		
 		
-		return null;
+		return "test";
 	}
 	
 }
