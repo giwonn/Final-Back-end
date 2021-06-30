@@ -10,7 +10,7 @@ public class PaymentDto {
 	private Date paymentdate;
 	private String paymentcontent;
 	private String paymentkinds;
-	// �븘�옒�뒗 �궇吏� �젣�븳 寃��깋�슜
+	// 아래는 날짜 제한 검색용
 	private Date firstdate;
 	private Date lastdate;
 	
