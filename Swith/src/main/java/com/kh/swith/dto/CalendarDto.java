@@ -17,16 +17,16 @@ import lombok.ToString;
 @AllArgsConstructor
 public class CalendarDto {
 	
+	
 	private int calendar_id;
 	private int member_id;
 	private int study_group_id;
 	private String title;
-	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
-	private Date start;
-	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
-	private Date end;
 	private String content;
-	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
+	private Date start;
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
+	private Date end;
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
 	private Date regdate;
-
 }

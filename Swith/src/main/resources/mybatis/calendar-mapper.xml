@@ -24,7 +24,21 @@
 		VALUES(CALENDARSEQ.NEXTVAL, #{member_id}, #{study_group_id}, #{title}, #{start}, #{end}, #{content}, SYSDATE)
 	</insert>
 	
+	<update id="update" parameterType="calendarDto">
+		UPDATE CALENDAR
+		<set> 
+			<if test='title != null and content != ""'>TITLE = #{title},</if>
+			<if test='content != null and content != ""'>CONTENT = #{content},</if>
+			<if test='start != null and content != ""'>START_DATE = #{start},</if>
+			<if test='end != null and content != ""'>END_DATE = #{end},</if>
+			CALENDAR_ID = #{calendar_id}
+		</set>
+		WHERE CALENDAR_ID = #{calendar_id}
+	</update>
 	
-
+	<delete id="delete" parameterType="calendarDto">
+		DELETE FROM CALENDAR
+		WHERE CALENDAR_ID = #{calendar_id}
+	</delete>
 
 </mapper>
