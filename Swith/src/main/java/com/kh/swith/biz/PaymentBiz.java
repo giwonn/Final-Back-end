@@ -1,11 +1,10 @@
-package com.kh.swith.dao;
+package com.kh.swith.biz;
 
 import java.util.List;
 
 import com.kh.swith.dto.PaymentDto;
 
-public interface PaymentDao {
-	public String NAMESPACE = "swith.paymentmapper.";
+public interface PaymentBiz {
 	public List<PaymentDto> selectList(int memberid);
 	public List<PaymentDto> selectListPeriod(PaymentDto dto);
 	public PaymentDto selectOne(String paymentid);

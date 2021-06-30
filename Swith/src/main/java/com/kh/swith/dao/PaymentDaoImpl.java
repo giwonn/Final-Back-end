@@ -1,7 +1,6 @@
 package com.kh.swith.dao;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -82,7 +81,7 @@ public class PaymentDaoImpl implements PaymentDao {
 			e.printStackTrace();
 		}
 		
-		return 0;
+		return res;
 	}
 
 }
