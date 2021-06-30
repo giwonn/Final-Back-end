@@ -5,11 +5,13 @@
 	<typeAliases>
 		<typeAlias type="com.kh.swith.test.dto.TestDto" alias="testDto" />
 		<typeAlias type="com.kh.swith.dto.StudyDto" alias="StudyDto" />
+		<typeAlias type="com.kh.swith.dto.PaymentDto" alias="PaymentDto" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/mybatis/test-mapper.xml" />
 		<mapper resource="/mybatis/study-mapper.xml" />
+		<mapper resource="/mybatis/payment-mapper.xml" />
 	</mappers>
 
 </configuration>
