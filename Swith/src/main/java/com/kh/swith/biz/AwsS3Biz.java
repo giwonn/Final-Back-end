@@ -45,7 +45,7 @@ public class AwsS3Biz {
 		return s3Client.getUrl(bucketName, filePath).toString();
 	}
 
-	public void deleteObject(String date, String storedFileName) throws AmazonServiceException {
+	public void deleteObject( String storedFileName) throws AmazonServiceException {
 		s3Client.deleteObject(new DeleteObjectRequest(bucketName + "/" , storedFileName));
 	}
 

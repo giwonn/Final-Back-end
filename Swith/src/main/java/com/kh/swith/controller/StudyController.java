@@ -50,9 +50,8 @@ public class StudyController {
 		// TODO: 실패 성공시 HTTP 통신 코드 넣는 법 알아서 설정해놓기 
 		
 		int res = biz.insertStudy(dto);
-		
 		resMap.put("success", res > 0 ? "true" : "false");
-		System.out.println(res);
+	
 		return resMap;
 	}
 }
