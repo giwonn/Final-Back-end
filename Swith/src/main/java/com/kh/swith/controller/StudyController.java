@@ -32,7 +32,7 @@ public class StudyController {
 	@Autowired
 	private StudyBiz biz;
 	
-	@RequestMapping(value="study/list.do", method=RequestMethod.GET)
+	@RequestMapping(value="studylist.do", method=RequestMethod.GET)
 	@ResponseBody
 	public List<StudyDto> selectStudyList(){
 		List<StudyDto> res = new ArrayList<StudyDto>();
