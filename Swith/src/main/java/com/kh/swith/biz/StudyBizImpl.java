@@ -1,6 +1,7 @@
 package com.kh.swith.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,8 @@ public class StudyBizImpl implements StudyBiz{
 	private StudyDao dao;
 	
 	@Override
-	public List<StudyDto> selectStudyList() {
-		return dao.selectStudyList();
+	public List<StudyDto> selectStudyList(Map<String, Float> map) {
+		return dao.selectStudyList(map);
 	}
 
 	@Override
