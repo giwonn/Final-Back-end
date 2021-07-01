@@ -27,15 +27,18 @@ public class CalendarDaoImpl implements CalendarDao {
 	}
 
 	@Override
-	public CalendarDto calendarSelectOne(int calendar_id) {
+	public List<CalendarDto> calendarSelectMember(String member_email) {
 		
-		CalendarDto calendarDto = null;
+		List<CalendarDto> list = new ArrayList<CalendarDto>();
 		try {
-			calendarDto = sqlSession.selectOne("swith.calendarmapper.selectList", calendar_id);
+			list = sqlSession.selectList("swith.calendarmapper.selectMember", member_email);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return calendarDto;
+		
+		System.out.println("testestestestest = "+list);
+		
+		return list;
 	}
 
 	@Override
