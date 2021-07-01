@@ -3,7 +3,7 @@
 
 
 
-<mapper namespace="swith.studymapper">
+<mapper namespace="swith.paymentmapper">
 
 	<resultMap type="PaymentDto" id="paymentMap">
 		<result property="paymentid" column="PAYMENT_ID" />
