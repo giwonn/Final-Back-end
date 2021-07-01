@@ -48,7 +48,8 @@
 			</if>
 		)
 	</insert>
-	<!-- <select id="selectList" resultMap="studyMap" parameterType="hashMap">
+	<select id="selectList" resultMap="studyMap" parameterType="hashMap">
+		<![CDATA[
 		SELECT 
 			STUDY_GROUP_ID, 
 			STUDY_GROUP_NAME, 
@@ -60,11 +61,15 @@
 			STUDY_GROUP_PW
 		FROM STUDY_GROUP
 		WHERE 1=1
-		AND (STUDY_GROUP_LAT BETWEEN #{lat}-#{dist} AND #{lat}+#{dist})
-		AND (STUDY_GROUP_LNG BETWEEN #{lng}-#{dist} AND #{lng}+#{dist})
+		AND (STUDY_GROUP_LAT BETWEEN #{lat}-(#{dist}*0.000001) AND #{lat}+(#{dist}*0.000001))
+		AND (STUDY_GROUP_LNG BETWEEN #{lng}-(#{dist}*0.000001) AND #{lng}+(#{dist}*0.000001))
+		AND (SQRT(POWER(#{lat}-STUDY_GROUP_LAT, 2) + POWER(#{lng}-STUDY_GROUP_LNG, 2)) / 2 <= (#{dist}*0.000001))
 		ORDER BY STUDY_GROUP_ID DESC
-	</select> -->
-	<select id="selectList" resultMap="studyMap" parameterType="hashMap">
+		]]>
+	</select>
+	
+	
+	<!-- <select id="selectList" resultMap="studyMap" parameterType="hashMap">
 		<![CDATA[
 		SELECT *,
 			(6371*ACOS(COS(ACOS(-1) / 180 * #{lat})*COS(ACOS(-1) / 180 * STUDY_GROUP_LAT)*COS(ACOS(-1) / 180 * STUDY_GROUP_LNG -ACOS(-1) / 180 * #{lng})+SIN(ACOS(-1) / 180 * #{lat})*SIN(ACOS(-1) / 180 * STUDY_GROUP_LAT))) AS distance
@@ -73,8 +78,8 @@
 		HAVING distance <= (#{dist} * 0.001) 
 		ORDER BY distance 
 		]]>
-	</select>
-
+	</select> -->
+	
 
 
 </mapper>
