@@ -20,8 +20,8 @@ public class CalendarBizImpl implements CalendarBiz {
 	}
 
 	@Override
-	public CalendarDto calendarSelectOne(int calendar_id) {
-		return calendarDao.calendarSelectOne(calendar_id);
+	public List<CalendarDto> calendarSelectMember(String member_email) {
+		return calendarDao.calendarSelectMember(member_email);
 	}
 
 	@Override
