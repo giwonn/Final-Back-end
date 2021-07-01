@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.swith.biz.StudyBiz;
@@ -32,14 +33,18 @@ public class StudyController {
 	@Autowired
 	private StudyBiz biz;
 	
-	@RequestMapping(value="study/list.do", method=RequestMethod.GET)
+	@RequestMapping(value="studylist.do", method=RequestMethod.GET)
 	@ResponseBody
-	public List<StudyDto> selectStudyList(){
-		List<StudyDto> res = new ArrayList<StudyDto>();
+	public List<StudyDto> selectStudyList(@RequestParam(value="lat") String lat, @RequestParam(value="lng") String lng, @RequestParam(value="dist") String dist){
 		
-		res = biz.selectStudyList();
+//		System.out.println(lat + " dfdfd");
 		
-		return res ;
+		Map map = new HashMap<String, Float>();
+		map.put("lat", lat);
+		map.put("lng", lng);
+		map.put("dist", dist);
+		
+		return new ArrayList<StudyDto>(biz.selectStudyList(map));
 	}
 	
 	@RequestMapping(value="study.do", method=RequestMethod.POST )
@@ -50,9 +55,8 @@ public class StudyController {
 		// TODO: 실패 성공시 HTTP 통신 코드 넣는 법 알아서 설정해놓기 
 		
 		int res = biz.insertStudy(dto);
-		
 		resMap.put("success", res > 0 ? "true" : "false");
-		System.out.println(res);
+	
 		return resMap;
 	}
 }

@@ -16,13 +16,14 @@ public class MemberDaoImpl implements MemberDao {
 	public String MemberSelect(String email) {
 		
 		String res = "";
+		System.out.println("biz : " +email);
 		
 		try {
-			// selectList , selectOne, insert , delete, update
 			res = sqlSession.selectOne("swith.membermapper.selectOne",email);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("biz res : " + res );
 		
 		return res;
 	}
@@ -33,10 +34,12 @@ public class MemberDaoImpl implements MemberDao {
 		int res = 0;
 		
 		try {
-			res = sqlSession.insert("",memberDto);
+			res = sqlSession.insert("swith.membermapper.insert",memberDto);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("inset res : " + res);
+		
 		return res;
 	}
 

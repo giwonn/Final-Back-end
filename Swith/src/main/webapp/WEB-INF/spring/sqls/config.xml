@@ -4,14 +4,18 @@
 
 	<typeAliases>
 		<typeAlias type="com.kh.swith.test.dto.TestDto" alias="testDto" />
+		<typeAlias type="com.kh.swith.dto.CalendarDto" alias="calendarDto" />
 		<typeAlias type="com.kh.swith.dto.StudyDto" alias="StudyDto" />
 		<typeAlias type="com.kh.swith.dto.PaymentDto" alias="PaymentDto" />
+		<typeAlias type="com.kh.swith.dto.MemberDto" alias="MemberDto" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="/mybatis/test-mapper.xml" />
+		<mapper resource="/mybatis/calendar-mapper.xml" />
 		<mapper resource="/mybatis/study-mapper.xml" />
 		<mapper resource="/mybatis/payment-mapper.xml" />
+		<mapper resource="/mybatis/member-mapper.xml" />
 	</mappers>
 
 </configuration>

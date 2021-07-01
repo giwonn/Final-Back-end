@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="swith.membermapper">
+	
+	<resultMap type="MemberDto" id="memberMap">
+		<result property="email" column="MEMBER_EMAIL" />
+		<result property="nickName" column="MEMBER_NICKNAME" />
+		<result property="phoneNumber" column="MEMBER_PHONENUMBER" />
+		<result property="location" column="MEMBER_LOC" />
+		<result property="image" column="MEMBER_IMG" />
+		<result property="intro" column="MEMBER_INTRO" />
+	</resultMap>
+
+	<select id="selectOne" parameterType="String" resultType="string">
+		SELECT MEMBER_EMAIL
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{email}
+	</select>
+	
+	<insert id="insert" parameterType="MemberDto">
+		INSERT INTO MEMBER
+		VALUES(#{email}, #{nickName}, #{phoneNumber}, #{location}, NULL, #{intro})
+	</insert>
+
+
+</mapper>
+

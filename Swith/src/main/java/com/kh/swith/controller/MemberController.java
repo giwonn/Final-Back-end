@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.swith.biz.MemberBiz;
@@ -15,32 +16,39 @@ import com.kh.swith.dto.MemberDto;
 @Controller
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
+
 	@Autowired
 	private MemberBiz memberBiz;
-	
-	@RequestMapping(value="/MemberCheck.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/MemberCheck.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String selectMember(@RequestBody String email) {
-		
-		System.out.println(email);
-		
-		String res = "NotUser";
-		
-		
+	public String selectMember(@RequestBody MemberDto dto) {
+
+		System.out.println(dto.getEmail());
+
+		String res = memberBiz.MemberSelect(dto.getEmail());
+
+		System.out.println(res);
+
+		if (res == null) {
+			return "NotUser";
+		}
 		return res;
 	}
-	
-	@RequestMapping(value="/MemberInsert.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/MemberInsert.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String InsertMember(@RequestBody MemberDto memberDto) {
-		
-		System.out.println("Test : " + memberDto.getNickName());	
-		
-//		if (memberBiz.MemberInsert(memberDto) > 0) {
-//			return "일정 등록 성공!";
-//		}
-		
-		return "일정 등록 실패!";
+		System.out.println("Test : " + memberDto.getEmail());
+		System.out.println("Test : " + memberDto.getNickName());
+		System.out.println("Test : " + memberDto.getPhoneNumber());
+		System.out.println("Test : " + memberDto.getIntro());
+		System.out.println("Test : " + memberDto.getLocation());
+
+		if (memberBiz.MemberInsert(memberDto) > 0) {
+			return "회원가입성공!";
+		}
+
+		return "회원가입실패!";
 	}
 }
