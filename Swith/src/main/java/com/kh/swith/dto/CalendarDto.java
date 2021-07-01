@@ -19,7 +19,7 @@ public class CalendarDto {
 	
 	
 	private int calendar_id;
-	private int member_id;
+	private String member_email;
 	private int study_group_id;
 	private String title;
 	private String content;

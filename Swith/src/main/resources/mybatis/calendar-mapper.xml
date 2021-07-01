@@ -4,7 +4,7 @@
 
 	<resultMap type="calendarDto" id="calendarMap">
 		<result property="calendar_id" column="CALENDAR_ID" />
-		<result property="member_id" column="MEMBER_ID" />
+		<result property="member_email" column="MEMBER_EMAIL" />
 		<result property="study_group_id" column="STUDY_GROUP_ID" />
 		<result property="title" column="TITLE" />
 		<result property="start" column="START_DATE" />
@@ -14,14 +14,21 @@
 	</resultMap>
 
 	<select id="selectList" resultMap="calendarMap">
-		SELECT CALENDAR_ID, MEMBER_ID, STUDY_GROUP_ID, TITLE, START_DATE, END_DATE, CONTENT, REGDATE
+		SELECT CALENDAR_ID, MEMBER_EMAIL, STUDY_GROUP_ID, TITLE, START_DATE, END_DATE, CONTENT, REGDATE
 		FROM CALENDAR
+		ORDER BY CALENDAR_ID DESC
+	</select>
+	
+	<select id="selectMember" parameterType="String" resultMap="calendarMap">
+		SELECT CALENDAR_ID, MEMBER_EMAIL, STUDY_GROUP_ID, TITLE, START_DATE, END_DATE, CONTENT, REGDATE
+		FROM CALENDAR
+		WHERE MEMBER_EMAIL = #{member_email}
 		ORDER BY CALENDAR_ID DESC
 	</select>
 
 	<insert id="insert" parameterType="calendarDto">
 		INSERT INTO CALENDAR
-		VALUES(CALENDARSEQ.NEXTVAL, #{member_id}, #{study_group_id}, #{title}, #{start}, #{end}, #{content}, SYSDATE)
+		VALUES(CALENDARSEQ.NEXTVAL, #{member_email}, #{study_group_id}, #{title}, #{start}, #{end}, #{content}, SYSDATE)
 	</insert>
 	
 	<update id="update" parameterType="calendarDto">
