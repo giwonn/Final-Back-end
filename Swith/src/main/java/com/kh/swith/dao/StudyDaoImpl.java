@@ -2,6 +2,7 @@ package com.kh.swith.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,36 @@ public class StudyDaoImpl implements StudyDao{
 	public int updateStudy(StudyDto dto) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<StudyDto> selectMyStudyList(String memberemail) {
+		List<StudyDto> resultList = new ArrayList<StudyDto> ();
+		
+		try {
+			resultList = sqlSession.selectList("selectListByUserEmail",memberemail);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultList;
+	}
+	
+	/**
+	 * insert study member 
+	 * studygroupid
+	*memberemail
+	*	role
+	 * 
+	 */
+	@Override
+	public int insertStudyMember(Map paramMap) {
+		int res = 0;
+		try {
+			res = sqlSession.insert("insertStudyMember",paramMap);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 }

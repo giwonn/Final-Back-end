@@ -1,6 +1,8 @@
 package com.kh.swith.biz;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +28,13 @@ public class StudyBizImpl implements StudyBiz{
 	}
 
 	@Override
-	public int insertStudy(StudyDto dto) {
+	public int insertStudy(StudyDto dto, String memberemail) {
 		// TODO Auto-generated method stub
+		int insertres = dao.insertStudy(dto);
+		Map <String, String> param = new HashMap();
+		if(insertres > 0) {
+			dao.insertStudyMember(param);
+		}
 		return dao.insertStudy(dto);
 	}
 

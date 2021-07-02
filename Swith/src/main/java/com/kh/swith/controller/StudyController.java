@@ -48,8 +48,10 @@ public class StudyController {
 		Map resMap = new HashMap<String, String>();
 		
 		// TODO: 실패 성공시 HTTP 통신 코드 넣는 법 알아서 설정해놓기 
-		
-		int res = biz.insertStudy(dto);
+		String memberemail = "gareen9342@gmail.com";
+		int res = biz.insertStudy(dto, memberemail);.
+		System.out.println("id = "+ dto.getStudygroupid());// 잘됨
+		// study group id를 삽입후찾고 그 아이디를 이용해서 
 		resMap.put("success", res > 0 ? "true" : "false");
 	
 		return resMap;
