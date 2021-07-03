@@ -10,13 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.swith.biz.StudyBiz;
 import com.kh.swith.dto.StudyDto;
-import com.kh.swith.test.controller.TestController;
 
 /**
  * Study Group Controller
@@ -49,11 +49,21 @@ public class StudyController {
 		
 		// TODO: 실패 성공시 HTTP 통신 코드 넣는 법 알아서 설정해놓기 
 		String memberemail = "gareen9342@gmail.com";
-		int res = biz.insertStudy(dto, memberemail);.
+		int res = biz.insertStudy(dto, memberemail);
 		System.out.println("id = "+ dto.getStudygroupid());// 잘됨
 		// study group id를 삽입후찾고 그 아이디를 이용해서 
 		resMap.put("success", res > 0 ? "true" : "false");
 	
 		return resMap;
+	}
+	
+	@RequestMapping(value="headerinfo.do", method=RequestMethod.GET )
+	@ResponseBody
+	public Map<String, String> displayHeaderInfo(@RequestHeader("Accept-Encoding") String encoding, @RequestHeader("Email") String authorization ) {
+		Map map = new HashMap<String, String>();
+		map.put("result", "asd");
+		System.out.println("asdf" + encoding);
+		System.out.println("authorization" + authorization);
+		return map;
 	}
 }

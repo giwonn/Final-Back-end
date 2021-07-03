@@ -31,10 +31,10 @@ public class StudyBizImpl implements StudyBiz{
 	public int insertStudy(StudyDto dto, String memberemail) {
 		// TODO Auto-generated method stub
 		int insertres = dao.insertStudy(dto);
-		Map <String, String> param = new HashMap();
-		if(insertres > 0) {
-			dao.insertStudyMember(param);
-		}
+//		Map <String, String> param = new HashMap();
+//		if(insertres > 0) {
+//			dao.insertStudyMember(param);
+//		}
 		return dao.insertStudy(dto);
 	}
 

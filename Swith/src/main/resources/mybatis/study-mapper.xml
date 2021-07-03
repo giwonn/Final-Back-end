@@ -19,6 +19,9 @@
 	</resultMap>
 
 	<insert id="insert" parameterType="StudyDto" useGeneratedKeys="false">
+		<selectKey keyProperty="studygroupid" resultType="integer" order="BEFORE">
+			 SELECT STUDY_GROUP_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO STUDY_GROUP (
 			STUDY_GROUP_ID, 
 			STUDY_GROUP_NAME, 
@@ -33,7 +36,7 @@
 			</if>
 		)
 		VALUES (
-			STUDY_GROUP_SEQ.NEXTVAL, 
+			#{studygroupid, jdbcType=INTEGER},
 			#{studygroupname}, 
 			#{studygroupdesc}, 
 			#{studygroupoffline},
@@ -47,9 +50,7 @@
 				,#{studygrouppw}
 			</if>
 		)
-		<selectKey keyProperty="studygroupid" resultType="int" order="AFTER">
-			SELECT STUDY_GROUP_SEQ.NEXTVAL FROM DUAL
-		</selectKey>
+		
 	</insert>
 	
 	<select id="selectList" resultMap="studyMap">
