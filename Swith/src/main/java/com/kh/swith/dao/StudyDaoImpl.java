@@ -51,4 +51,34 @@ public class StudyDaoImpl implements StudyDao{
 		return 0;
 	}
 
+	@Override
+	public List<StudyDto> selectMyStudyList(String memberemail) {
+		List<StudyDto> resultList = new ArrayList<StudyDto> ();
+		
+		try {
+			resultList = sqlSession.selectList("selectListByUserEmail",memberemail);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return resultList;
+	}
+	
+	/**
+	 * insert study member 
+	 * studygroupid
+	*memberemail
+	*	role
+	 * 
+	 */
+	@Override
+	public int insertStudyMember(Map paramMap) {
+		int res = 0;
+		try {
+			res = sqlSession.insert("insertStudyMember",paramMap);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 }

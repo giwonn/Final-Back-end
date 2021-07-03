@@ -18,7 +18,7 @@
 		<result property="studyusercnt" column="STUDY_USERCNT" />
 	</resultMap>
 
-	<insert id="insert" parameterType="StudyDto">
+	<insert id="insert" parameterType="StudyDto" useGeneratedKeys="false">
 		INSERT INTO STUDY_GROUP (
 			STUDY_GROUP_ID, 
 			STUDY_GROUP_NAME, 
@@ -47,6 +47,9 @@
 				,#{studygrouppw}
 			</if>
 		)
+		<selectKey keyProperty="studygroupid" resultType="int" order="AFTER">
+			SELECT STUDY_GROUP_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 	</insert>
 	<select id="selectList" resultMap="studyMap" parameterType="hashMap">
 		<![CDATA[
@@ -81,6 +84,37 @@
 	</select> -->
 	
 
+	<select id="selectListByUserEmail" resultMap="studyMap" parameterType="String">
+		SELECT 
+			STUDY_GROUP_ID, 
+			STUDY_GROUP_NAME, 
+			STUDY_GROUP_DESC, 
+			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_LNG, 
+			STUDY_GROUP_LAT,
+			STUDY_GROUP_ADDR
+		FROM STUDY_GROUP
+		WHERE STUDY_GROUP_ID IN (
+			SELECT 
+				STUDY_GROUP_ID
+			FROM STUDY_GROUP_MEMBER
+			WHERE MEMBER_EMAIL = #{memberemail}
+		)
+	</select>
+
+	<insert id="insertStudyMember" parameterType="Map">
+		INSERT INTO STUDY_GROUP_MEMBER(
+			STUDY_GROUP_MEMBER_ID,
+			STUDY_GROUP_ID,
+			MEMBER_EMAIL,
+			ROLE
+		)VALUES(
+			STUDY_GROUP_MEMBER_SEQ.NEXTVAL,
+			#{studygroupid},
+			#{memberemail},
+			#{role}
+		)
+	</insert>
 
 </mapper>
 
