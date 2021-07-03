@@ -17,10 +17,10 @@ public class StudyDaoImpl implements StudyDao{
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<StudyDto> selectStudyList() {
+	public List<StudyDto> selectStudyList(Map<String, Float> map) {
 		List<StudyDto> resList = new ArrayList<StudyDto>();
 		try {
-			resList = sqlSession.selectList(NAMESPACE + "selectList");
+			resList = sqlSession.selectList(NAMESPACE + "selectList", map);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

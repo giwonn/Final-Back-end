@@ -17,8 +17,8 @@ public class StudyBizImpl implements StudyBiz{
 	private StudyDao dao;
 	
 	@Override
-	public List<StudyDto> selectStudyList() {
-		return dao.selectStudyList();
+	public List<StudyDto> selectStudyList(Map<String, Float> map) {
+		return dao.selectStudyList(map);
 	}
 
 	@Override
