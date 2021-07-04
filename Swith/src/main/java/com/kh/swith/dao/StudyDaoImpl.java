@@ -29,8 +29,13 @@ public class StudyDaoImpl implements StudyDao{
 
 	@Override
 	public StudyDto selectOneStudy(int study_group_id) {
-		// TODO Auto-generated method stub
-		return null;
+		StudyDto dto = new StudyDto();
+		try {
+			dto = sqlSession.selectOne(NAMESPACE + "selectStudyById", study_group_id);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 	@Override
@@ -56,25 +61,18 @@ public class StudyDaoImpl implements StudyDao{
 		List<StudyDto> resultList = new ArrayList<StudyDto> ();
 		
 		try {
-			resultList = sqlSession.selectList("selectListByUserEmail",memberemail);
+			resultList = sqlSession.selectList(NAMESPACE + "selectListByUserEmail", memberemail);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return resultList;
 	}
-	
-	/**
-	 * insert study member 
-	 * studygroupid
-	*memberemail
-	*	role
-	 * 
-	 */
+
 	@Override
 	public int insertStudyMember(Map paramMap) {
 		int res = 0;
 		try {
-			res = sqlSession.insert("insertStudyMember",paramMap);
+			res = sqlSession.insert(NAMESPACE + "insertStudyMember",paramMap);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
