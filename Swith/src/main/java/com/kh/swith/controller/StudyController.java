@@ -49,26 +49,31 @@ public class StudyController {
 	
 	@RequestMapping(value="study.do", method=RequestMethod.POST )
 	@ResponseBody
-	public Map<String, String> insertStudy(@RequestBody StudyDto dto){
+	public Map<String, String> insertStudy(@RequestBody StudyDto dto,  @RequestHeader("Email") String usermail ){
 		Map resMap = new HashMap<String, String>();
 		
-		// TODO: 실패 성공시 HTTP 통신 코드 넣는 법 알아서 설정해놓기 
-		String memberemail = "gareen9342@gmail.com";
+		//usermail의 값은 요청헤더에서 갖고오게 임시로 세팅하였다 유저의 여부 먼저 판단 하는 개념으로 가야함  
+		String memberemail = usermail;
+		dto.setStudygroupadmin(memberemail);
+		
 		int res = biz.insertStudy(dto, memberemail);
-		System.out.println("id = "+ dto.getStudygroupid());// 잘됨
+		System.out.println("id = "+ dto.getStudygroupid() + "email = " + usermail);  // 잘됨
+		
 		// study group id를 삽입후찾고 그 아이디를 이용해서 
 		resMap.put("success", res > 0 ? "true" : "false");
 	
 		return resMap;
 	}
 	
-	@RequestMapping(value="headerinfo.do", method=RequestMethod.GET )
+	
+	@RequestMapping(value="mystudy.do", method=RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> displayHeaderInfo(@RequestHeader("Accept-Encoding") String encoding, @RequestHeader("Email") String authorization ) {
-		Map map = new HashMap<String, String>();
-		map.put("result", "asd");
-		System.out.println("asdf" + encoding);
-		System.out.println("authorization" + authorization);
-		return map;
+	public List<StudyDto> selectMyStudyList(@RequestHeader("Email") String usermail){
+		List<StudyDto> resList = new ArrayList<StudyDto>();
+		
+		resList = biz.selectMyStudyList(usermail);
+		
+		return resList;
 	}
+	
 }

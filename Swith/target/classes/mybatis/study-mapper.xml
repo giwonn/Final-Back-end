@@ -11,6 +11,7 @@
 		<result property="studygroupdesc" column="STUDY_GROUP_DESC" />
 		<result property="studygroupoffline" column="STUDY_GROUP_OFFLINE" />
 		<result property="studygrouparea" column="STUDY_GROUP_AREA" />
+		<result property="studygroupadmin" column="STUDY_GROUP_ADMIN" />
 		<result property="studygrouplng" column="STUDY_GROUP_LNG" />
 		<result property="studygrouplat" column="STUDY_GROUP_LAT" />
 		<result property="studygroupaddr" column="STUDY_GROUP_ADDR" />
@@ -27,7 +28,8 @@
 			STUDY_GROUP_NAME, 
 			STUDY_GROUP_DESC, 
 			STUDY_GROUP_OFFLINE,
-			STUDY_GROUP_AREA
+			STUDY_GROUP_AREA,
+			STUDY_GROUP_ADMIN
 			<if test='studygrouplng != null and studygrouplng != "" and studygroupaddr != null and studygroupaddr != "" and studygrouplat != null and studygrouplat != "" '>
 				,STUDY_GROUP_LNG, STUDY_GROUP_LAT, STUDY_GROUP_ADDR
 			</if>
@@ -40,7 +42,8 @@
 			#{studygroupname}, 
 			#{studygroupdesc}, 
 			#{studygroupoffline},
-			#{studygrouparea}
+			#{studygrouparea},
+			#{studygroupadmin}
 			<if test='studygrouplng != null and studygrouplng != "" and studygroupaddr != null and studygroupaddr != "" and studygrouplat != null and studygrouplat != "" '>
 				,#{studygrouplng}
 				,#{studygrouplat}
@@ -80,7 +83,8 @@
 			STUDY_GROUP_OFFLINE, 
 			STUDY_GROUP_LNG, 
 			STUDY_GROUP_LAT,
-			STUDY_GROUP_ADDR
+			STUDY_GROUP_ADDR,
+			STUDY_GROUP_ADMIN
 		FROM STUDY_GROUP
 		WHERE STUDY_GROUP_ID IN (
 			SELECT 
@@ -104,18 +108,18 @@
 		)
 	</insert>
 	
-	<!-- <select id="selectList" resultMap="studyMap" parameterType="hashMap">
-		<![CDATA[
-		SELECT *,
-			(6371*ACOS(COS(ACOS(-1) / 180 * #{lat})*COS(ACOS(-1) / 180 * STUDY_GROUP_LAT)*COS(ACOS(-1) / 180 * STUDY_GROUP_LNG -ACOS(-1) / 180 * #{lng})+SIN(ACOS(-1) / 180 * #{lat})*SIN(ACOS(-1) / 180 * STUDY_GROUP_LAT))) AS distance
-		FROM STUDY_GROUP 
-		WHERE STUDY_GROUP_LAT IS NOT NULL AND STUDY_GROUP_LNG IS NOT NULL 
-		HAVING distance <= (#{dist} * 0.001) 
-		ORDER BY distance 
-		]]>
-	</select> -->
-	
-
-
+	<select id="selectStudyById" parameterType="int">
+		SELECT 
+			STUDY_GROUP_ID, 
+			STUDY_GROUP_NAME, 
+			STUDY_GROUP_DESC, 
+			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_LNG, 
+			STUDY_GROUP_LAT,
+			STUDY_GROUP_ADDR,
+			STUDY_GROUP_ADMIN
+		FROM STUDY_GROUP
+		WHERE STUDY_GROUP_ID = #{studygroupid}
+	</select>
 </mapper>
 

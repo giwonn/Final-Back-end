@@ -55,7 +55,7 @@ public class LogFilter implements Filter {
 	    resp.setHeader("Access-Control-Allow-Credentials", "true");
 		resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, OPTIONS, DELETE ");
 		resp.setHeader("Access-Control-Max-Age", "10");
-		resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me, Email, Authorization ");
+		resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me, Email ");
 
 		logger.info("\nLOG Filter" + sb);
 
