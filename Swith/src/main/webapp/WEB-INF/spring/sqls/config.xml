@@ -7,8 +7,8 @@
 		<typeAlias type="com.kh.swith.dto.CalendarDto" alias="calendarDto" />
 		<typeAlias type="com.kh.swith.dto.StudyDto" alias="StudyDto" />
 		<typeAlias type="com.kh.swith.dto.MemberDto" alias="MemberDto" />
-		<typeAlias type="com.kh.swith.dto.TodolistPersonalDto" alias="TodolistPersonalDto" />
-		<typeAlias type="com.kh.swith.dto.TodolistStudyDto" alias="TodolistStudyDto" />
+		<typeAlias type="com.kh.swith.dto.TodoMyDto" alias="TodoMyDto" />
+		<typeAlias type="com.kh.swith.dto.TodoStudyDto" alias="TodoStudyDto" />
 	</typeAliases>
 
 	<mappers>
@@ -16,7 +16,8 @@
 		<mapper resource="/mybatis/calendar-mapper.xml" />
 		<mapper resource="/mybatis/study-mapper.xml" />
 		<mapper resource="/mybatis/member-mapper.xml" />
-		<mapper resource="/mybatis/todolist-mapper.xml" />
+		<mapper resource="/mybatis/todolist-my-mapper.xml" />
+		<mapper resource="/mybatis/todolist-study-mapper.xml" />
 	</mappers>
 
 </configuration>

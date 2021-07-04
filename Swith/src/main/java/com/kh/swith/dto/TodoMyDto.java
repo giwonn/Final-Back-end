@@ -11,12 +11,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TodolistStudyDto {
-	private String todolistid;
+public class TodoMyDto {
+	private int todomyid;
 	private String title;
 	private String content;
 	private String isdone;
-	private String studygroupid;
 	private String memberemail;
 	private Date createdat;
 	private Date doneat;
