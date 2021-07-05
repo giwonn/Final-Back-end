@@ -65,7 +65,6 @@ public class StudyController {
 		return resMap;
 	}
 	
-	
 	@RequestMapping(value="mystudy.do", method=RequestMethod.GET)
 	@ResponseBody
 	public List<StudyDto> selectMyStudyList(@RequestHeader("Email") String usermail){

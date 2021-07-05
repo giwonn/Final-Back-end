@@ -1,5 +1,7 @@
 package com.kh.swith.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,18 +16,18 @@ public class TodoMyBizImpl implements TodoMyBiz{
 	private TodoMyDao dao;
 	
 	@Override
-	public int uploadMyTodo(TodoMyDto dto, String useremail) {
-		return dao.insertMyTodo(dto, useremail);
+	public int uploadMyTodo(TodoMyDto dto) {
+		return dao.insertMyTodo(dto);
 	}
 
 	@Override
-	public TodoMyDto selectMyTodoList(String useremail) {
+	public List<TodoMyDto> selectMyTodoList(String useremail) {
 		return dao.selectMyTodoList(useremail);
 	}
 
 	@Override
-	public int updateMyTodo(TodoMyDto dto, String useremail) {
-		return dao.updateMyTodo(dto, useremail);
+	public int updateMyTodo(TodoMyDto dto) {
+		return dao.updateMyTodo(dto);
 	}
 
 	@Override

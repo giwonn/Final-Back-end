@@ -1,5 +1,7 @@
 package com.kh.swith.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,26 +15,23 @@ public class TodoMyDaoImpl implements TodoMyDao{
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public int insertMyTodo(TodoMyDto dto, String useremail) {
-		return sqlSession.insert("");
+	public int insertMyTodo(TodoMyDto dto) {
+		return sqlSession.insert(NAMESPACE+"insertTodo", dto);
 	}
 
 	@Override
-	public TodoMyDto selectMyTodoList(String useremail) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TodoMyDto> selectMyTodoList(String useremail) {
+		return sqlSession.selectList(NAMESPACE + "selectTodos", useremail);
 	}
 
 	@Override
-	public int updateMyTodo(TodoMyDto dto, String useremail) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateMyTodo(TodoMyDto dto) {
+		return sqlSession.update(NAMESPACE + "updateTodo", dto);
 	}
 
 	@Override
 	public int deleteMyTodo(int myTodoId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE + "deleteTodo", myTodoId);
 	}
 
 }
