@@ -25,24 +25,22 @@
 				CONTENT,
 				IS_DONE,
 				MEMBER_EMAIL,
-				CREATEDAT,
-				DONEAT
+				CREATEDAT
 			)
 		VALUES
 			(
 				#{todomyid},
 				#{title},
 				#{content},
-				#{isdone},
+				0,
 				#{memberemail},
-				#{createdat},
-				#{doneat}
+				SYSDATE
 			)
 	</insert>
 	
 	<select id="selectTodos" parameterType="String" resultMap="todoMyMap">
 		SELECT 
-			(
+			
 				TODO_MY_ID,
 				TITLE,
 				CONTENT,
@@ -50,12 +48,12 @@
 				MEMBER_EMAIL,
 				CREATEDAT,
 				DONEAT
-			)
+			
 		FROM TO_DO_LIST_MY
 		WHERE 
 			MEMBER_EMAIL = #{memberemail}
 			AND 
-			TO_CHAR(CREATEDAT,'yyyymmdd') = TO_CHAR(SYSDATE,'yyyymmdd')
+			TO_CHAR(CREATEDAT,'yyyymmdd') = TO_CHAR(SYSDATE,'yyyymmdd') 
 	</select>
 	
 	<delete id="deleteTodo" parameterType="int">
