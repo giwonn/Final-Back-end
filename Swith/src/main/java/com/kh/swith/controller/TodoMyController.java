@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,17 +29,19 @@ public class TodoMyController {
 	// ========================== insert to do ========================== // 
 	@RequestMapping(value="/mytodo.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map insertMyTodo (TodoMyDto dto, @RequestHeader("Email") String email) {
+	public Map insertMyTodo (@RequestBody TodoMyDto dto, @RequestHeader("Email") String email) {
 		int res = 0;
 		Map map = new HashMap();
 		
-		if(email != null || email.length() < 1 ) {
+		if(email == null || email.length() < 1 ) {
 			// 유저 정보 없음 
 			map.put("success" , "false");
+			System.out.println("here");
 			return map;
 		}
 		// ========= 이메일 세팅 후 업로드 
 		dto.setMemberemail(email);
+		System.out.println(dto.getTitle());
 		res = biz.uploadMyTodo(dto);
 		
 		if(res > 0) {
@@ -80,7 +83,7 @@ public class TodoMyController {
 	// ========================== update to do ========================== //
 	@RequestMapping(value="/mytodo.do", method=RequestMethod.PUT)
 	@ResponseBody
-	public Map updateMyTodo (TodoMyDto todo, @RequestHeader("Email") String email) {
+	public Map updateMyTodo (@RequestBody TodoMyDto todo, @RequestHeader("Email") String email) {
 		
 		Map res = new HashMap();
 		TodoMyDto dto = new TodoMyDto();
