@@ -34,19 +34,30 @@ public class CalendarController {
 		return calendarBiz.calendarSelectList();
 	}
 	
-	
+	// 멤버별 List출력
 	@RequestMapping(value = "calendarSelectMember.do", method = RequestMethod.POST)
 	@ResponseBody
-	public List<CalendarDto> test(HttpSession session, @RequestBody String member_email) {
+	public List<CalendarDto> calendarSelectMember(HttpSession session, @RequestBody String member_email) {
 		logger.info("[Controller] calendarSelectMember.do");
 		
 		// react 서버에서 넘오올때 @ -> %40으로 변환되고 마지막에는 =가 붙어서 잘라내주기 위해 split 사용
 		member_email = member_email.split("%40")[0] + "@" + member_email.split("%40")[1];
 		member_email = member_email.split("=")[0]+"";
 		
-		System.out.println("SELECTONE TEST : " + member_email);
+		System.out.println("SELECTMEMBER TEST : " + member_email);
 		
 		return calendarBiz.calendarSelectMember(member_email);
+	}
+	
+	// 스터디별 List 출력
+	@RequestMapping(value = "calendarSelectStudy.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<CalendarDto> calendarSelectStudy(HttpSession session, @RequestBody int study_id) {
+		logger.info("[Controller] calendarSelectStudy.do");
+		
+		System.out.println("SELECTSTUDY TEST : " + study_id);
+		
+		return calendarBiz.calendarSelectStudy(study_id);
 	}
 	
 	@RequestMapping(value = "calendarInsert.do", method = RequestMethod.POST)
