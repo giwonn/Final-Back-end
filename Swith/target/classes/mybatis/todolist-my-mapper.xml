@@ -63,10 +63,10 @@
 	
 	<update id="updateTodo" parameterType="TodoMyDto">
 		UPDATE TO_DO_LIST_MY
-		<set>
-			<if test="title != null and title !='' ">TITLE = #{title}</if>
-			<if test="content != null and content !='' ">CONTENT = #{content}</if>
-		</set>
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="title != null and title != '' ">TITLE = #{title},</if>
+			<if test="content != null and content !='' ">CONTENT = #{content},</if>
+		</trim>
 		WHERE TODO_MY_ID = #{todomyid}
 	</update>
 	
