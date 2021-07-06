@@ -10,4 +10,5 @@ public interface TodoMyBiz {
 	public List<TodoMyDto>selectMyTodoList(String useremail);
 	public int updateMyTodo (TodoMyDto dto);
 	public int deleteMyTodo(int myTodoId);
+	public int toggleMyTodo(int todomyid);
 }

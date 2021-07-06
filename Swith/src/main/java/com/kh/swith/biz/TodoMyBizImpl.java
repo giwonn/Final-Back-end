@@ -35,4 +35,9 @@ public class TodoMyBizImpl implements TodoMyBiz{
 		return dao.deleteMyTodo(myTodoId);
 	}
 
+	@Override
+	public int toggleMyTodo(int todomyid) {
+		return dao.toggleMyTodo(todomyid);
+	}
+
 }

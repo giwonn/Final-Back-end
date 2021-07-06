@@ -34,4 +34,9 @@ public class TodoMyDaoImpl implements TodoMyDao{
 		return sqlSession.delete(NAMESPACE + "deleteTodo", myTodoId);
 	}
 
+	@Override
+	public int toggleMyTodo(int todomyid) {
+		return sqlSession.update(NAMESPACE + "toggleTodo", todomyid);
+	}
+
 }

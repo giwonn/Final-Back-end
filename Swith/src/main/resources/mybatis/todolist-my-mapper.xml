@@ -64,9 +64,19 @@
 	<update id="updateTodo" parameterType="TodoMyDto">
 		UPDATE TO_DO_LIST_MY
 		<set>
-			<if test="title != null and title =='' ">TITLE = #{title}</if>
-			<if test="content != null and content =='' ">CONTENT = #{content}</if>
+			<if test="title != null and title !='' ">TITLE = #{title}</if>
+			<if test="content != null and content !='' ">CONTENT = #{content}</if>
 		</set>
+		WHERE TODO_MY_ID = #{todomyid}
+	</update>
+	
+	<update id="toggleTodo" parameterType="int">
+		UPDATE TO_DO_LIST_MY 
+		SET IS_DONE = CASE
+			WHEN IS_DONE = 0 THEN 1
+			WHEN IS_DONE = 1 THEN 0
+			ELSE 0
+			END
 		WHERE TODO_MY_ID = #{todomyid}
 	</update>
 </mapper>
