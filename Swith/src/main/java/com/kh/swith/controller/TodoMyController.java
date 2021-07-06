@@ -99,4 +99,27 @@ public class TodoMyController {
 		return res;
 	}
 	
+	// ========================== toggle to do ========================== //
+	@RequestMapping(value="/mytodo.do", method=RequestMethod.PATCH)
+	@ResponseBody
+	public Map toggleMyTodo (@RequestParam String id) {
+		Map map = new HashMap();
+		
+		if(id == null || id== "") {
+			map.put("success", "false");
+			return map;
+		}
+		int res = biz.toggleMyTodo(Integer.parseInt(id));
+		
+		if(res > 0) {
+			map.put("success" , "true");
+			map.put("id" ,id);
+		}else {
+			map.put("success", "false");
+		}
+		
+		
+		return map;
+	}
+	
 }
