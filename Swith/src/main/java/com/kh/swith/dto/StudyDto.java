@@ -17,10 +17,11 @@ public class StudyDto {
 	private String studygroupname;
 	private String studygroupdesc;
 	private String studygroupoffline;
-	private String studygrouploc;
-	private String studygroupaddrid;
+	private String studygrouparea;
+	private String studygrouplat;
+	private String studygrouplng;
 	private String studygroupaddr;
+	private String studygroupadmin;
 	private String studygrouppw;
 	private int studyusercnt;
-	
 }

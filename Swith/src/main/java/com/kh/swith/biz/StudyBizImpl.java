@@ -1,6 +1,9 @@
 package com.kh.swith.biz;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,26 +18,50 @@ public class StudyBizImpl implements StudyBiz{
 	private StudyDao dao;
 	
 	@Override
-	public List<StudyDto> selectStudyList() {
-		return dao.selectStudyList();
+	public List<StudyDto> selectStudyList(Map<String, Float> map) {
+		return dao.selectStudyList(map);
 	}
 
 	@Override
 	public StudyDto selectOneStudy(int study_group_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectOneStudy(study_group_id);
 	}
 
 	@Override
-	public int insertStudy(StudyDto dto) {
-		// TODO Auto-generated method stub
-		return dao.insertStudy(dto);
+	public int insertStudy(StudyDto dto, String memberemail) {
+		int insertres = dao.insertStudy(dto);
+		int insertuserres = 0;
+		
+		System.out.println("after insert study get study group id = "+dto.getStudygroupid() );
+		
+		Map <String, String> param = new HashMap();
+		
+		if(insertres > 0) {
+			int studygroupid = dto.getStudygroupid();
+			
+			param.put("studygroupid", studygroupid+"");
+			param.put("memberemail", memberemail);
+			param.put("role", "admin");
+			
+			insertuserres = dao.insertStudyMember(param);
+		}
+		
+		return insertuserres;
 	}
 
 	@Override
 	public int updateStudy(StudyDto dto) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<StudyDto> selectMyStudyList(String usermail) {
+		List<StudyDto> list = new ArrayList<StudyDto> ();
+		
+		list = dao.selectMyStudyList(usermail);
+		
+		return list;
 	}
 
 }
