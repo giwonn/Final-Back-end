@@ -35,13 +35,18 @@ public class CalendarController {
 	}
 	
 	
-	@RequestMapping(value = "calendarSelectOne.do", method = RequestMethod.POST)
+	@RequestMapping(value = "calendarSelectMember.do", method = RequestMethod.POST)
 	@ResponseBody
-	public CalendarDto test(HttpSession session, @RequestBody CalendarDto calendarDto) {
-		logger.info("[Controller] calendarSelectOne.do");
-		System.out.println(calendarDto.getCalendar_id());
+	public List<CalendarDto> test(HttpSession session, @RequestBody String member_email) {
+		logger.info("[Controller] calendarSelectMember.do");
 		
-		return calendarBiz.calendarSelectOne(calendarDto.getCalendar_id());
+		// react 서버에서 넘오올때 @ -> %40으로 변환되고 마지막에는 =가 붙어서 잘라내주기 위해 split 사용
+		member_email = member_email.split("%40")[0] + "@" + member_email.split("%40")[1];
+		member_email = member_email.split("=")[0]+"";
+		
+		System.out.println("SELECTONE TEST : " + member_email);
+		
+		return calendarBiz.calendarSelectMember(member_email);
 	}
 	
 	@RequestMapping(value = "calendarInsert.do", method = RequestMethod.POST)
