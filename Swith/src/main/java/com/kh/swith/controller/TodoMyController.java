@@ -83,10 +83,9 @@ public class TodoMyController {
 	// ========================== update to do ========================== //
 	@RequestMapping(value="/mytodo.do", method=RequestMethod.PUT)
 	@ResponseBody
-	public Map updateMyTodo (@RequestBody TodoMyDto todo, @RequestHeader("Email") String email) {
+	public Map updateMyTodo (@RequestBody TodoMyDto dto, @RequestHeader("Email") String email) {
 		
 		Map res = new HashMap();
-		TodoMyDto dto = new TodoMyDto();
 		
 		if(email == null || email.length() < 1) {
 			res.put("success", "false");
