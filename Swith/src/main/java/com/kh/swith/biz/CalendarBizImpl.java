@@ -25,8 +25,8 @@ public class CalendarBizImpl implements CalendarBiz {
 	}
 	
 	@Override
-	public List<CalendarDto> calendarSelectStudy(int sutdy_id){
-		return calendarDao.calendarSelectStudy(sutdy_id);
+	public List<CalendarDto> calendarSelectStudy(int study_group_id){
+		return calendarDao.calendarSelectStudy(study_group_id);
 	}
 
 	@Override

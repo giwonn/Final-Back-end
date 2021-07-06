@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.swith.biz.CalendarBiz;
@@ -49,16 +50,18 @@ public class CalendarController {
 		return calendarBiz.calendarSelectMember(member_email);
 	}
 	
+	
 	// 스터디별 List 출력
 	@RequestMapping(value = "calendarSelectStudy.do", method = RequestMethod.POST)
 	@ResponseBody
-	public List<CalendarDto> calendarSelectStudy(HttpSession session, @RequestBody int study_id) {
+	public List<CalendarDto> calendarSelectStudy(HttpSession session, @RequestParam String studyGroupId) {
 		logger.info("[Controller] calendarSelectStudy.do");
 		
-		System.out.println("SELECTSTUDY TEST : " + study_id);
+		System.out.println("SELECTSTUDY TEST : " + studyGroupId);
 		
-		return calendarBiz.calendarSelectStudy(study_id);
+		return calendarBiz.calendarSelectStudy(Integer.parseInt(studyGroupId));
 	}
+	
 	
 	@RequestMapping(value = "calendarInsert.do", method = RequestMethod.POST)
 	@ResponseBody
