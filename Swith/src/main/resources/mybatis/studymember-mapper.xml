@@ -9,10 +9,20 @@
 		<result property="role" column="ROLE" />
 	</resultMap>
 	
+	
+	
 	<select id="selectOne" parameterType="String" resultType="string">
 		SELECT ROLE
 		FROM STUDY_GROUP_MEMBER
 		WHERE MEMBER_EMAIL = #{email} AND STUDY_GROUP_ID = #{studyId}
+	</select>
+	
+	<select id="getList" resultMap="studyMemberMap">
+		SELECT A.MEMBER_NICKNAME, A.MEMBER_LOC, A.MEMBER_PHONENUMBER, B.ROLE
+		FROM MEMBER A 
+		FULL OUTER JOIN STUDY_GROUP_MEMBER B
+		ON A.MEMBER_EMAIL = B.MEMBER_EMAIL
+		WHERE STUDY_GROUP_ID = #{studyId}
 	</select>
 
 	

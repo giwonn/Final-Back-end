@@ -1,6 +1,7 @@
 package com.kh.swith.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,5 +37,16 @@ public class StudyMemberController {
 		System.out.println("role : " + res);
 		
 		return res;
+	}
+	
+	@RequestMapping(value="groupStudygetList.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<StudyMemberDto> studyGetList(@RequestBody String studyId){
+		
+		logger.info("[GroupStudyController] groupStudygetList.do");
+		
+		System.out.println("스터디 번호 : " + studyId);
+		
+		return studymemberbiz.studyGetList(studyId);
 	}
 }

@@ -1,6 +1,7 @@
 package com.kh.swith.dao;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,21 @@ public class StudyMemberDaoImpl implements StudyMemberDao {
 		}
 		
 		return role;
+	}
+
+	@Override
+	public List<StudyMemberDto> studyGetList(String studyId) {
+		List<StudyMemberDto> list = new ArrayList<StudyMemberDto>();
+		
+		try {
+			list = sqlSession.selectList("swith.studymembermapper.getList", studyId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("listlistlist : " + list);
+		
+		return list;
 	}
 
 }
