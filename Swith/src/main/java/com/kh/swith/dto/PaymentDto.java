@@ -15,7 +15,7 @@ import lombok.ToString;
 @ToString
 public class PaymentDto {
 	private String paymentid;
-	private int memberid;
+	private String memberemail;
 	private int paymentprice;
 	private Date paymentdate;
 	private String paymentcontent;

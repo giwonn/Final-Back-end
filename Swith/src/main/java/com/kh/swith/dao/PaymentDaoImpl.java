@@ -16,11 +16,11 @@ public class PaymentDaoImpl implements PaymentDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<PaymentDto> selectList(int memberid) {
+	public List<PaymentDto> selectList(String memberemail) {
 		List<PaymentDto> list = new ArrayList<>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList", memberid);
+			list = sqlSession.selectList(NAMESPACE+"selectList", memberemail);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -43,7 +43,6 @@ public class PaymentDaoImpl implements PaymentDao {
 		return list;
 	}
 	
-	
 	@Override
 	public PaymentDto selectOne(String paymentid) {
 		PaymentDto dto = new PaymentDto();
@@ -57,7 +56,6 @@ public class PaymentDaoImpl implements PaymentDao {
 		return dto;
 	}
 	
-
 	@Override
 	public int insert(PaymentDto dto) {
 		int res = 0;
@@ -70,18 +68,22 @@ public class PaymentDaoImpl implements PaymentDao {
 		
 		return res;
 	}
-
+	
 	@Override
-	public int refund(String paymentid) {
+	public boolean premiumCheck(String memberemail) {
 		int res = 0;
-		
+		System.out.println("email : " + memberemail);
 		try {
-			res = sqlSession.update(NAMESPACE+"refund", paymentid);
+			res = sqlSession.selectOne(NAMESPACE+"premiumCheck", memberemail);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("res : " + res);
+		if (res > 0) {
+			return true;
+		}
 		
-		return res;
+		return false;
 	}
 
 }

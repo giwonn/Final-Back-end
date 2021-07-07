@@ -15,8 +15,8 @@ public class PaymentBizImpl implements PaymentBiz {
 	private PaymentDao dao;
 
 	@Override
-	public List<PaymentDto> selectList(int memberid) {
-		return dao.selectList(memberid);
+	public List<PaymentDto> selectList(String memberemail) {
+		return dao.selectList(memberemail);
 	}
 
 	@Override
@@ -33,10 +33,10 @@ public class PaymentBizImpl implements PaymentBiz {
 	public int insert(PaymentDto dto) {
 		return dao.insert(dto);
 	}
-
+	
 	@Override
-	public int refund(String peymentid) {
-		return dao.refund(peymentid);
+	public boolean premiumCheck(String memberemail) {
+		return dao.premiumCheck(memberemail);
 	}
 
 }
