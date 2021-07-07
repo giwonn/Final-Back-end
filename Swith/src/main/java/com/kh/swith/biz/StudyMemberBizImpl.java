@@ -1,5 +1,7 @@
 package com.kh.swith.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class StudyMemberBizImpl implements StudyMemberBiz {
 	@Override
 	public String selectRole(StudyMemberDto dto) {
 		return groupstudyDao.selectRole(dto);
+	}
+
+	@Override
+	public List<StudyMemberDto> studyGetList(String studyId) {
+		return groupstudyDao.studyGetList(studyId);
 	}
 
 }
