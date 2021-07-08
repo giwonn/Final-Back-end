@@ -3,13 +3,6 @@
 
 <mapper namespace="swith.studyintroducemapper">
 
-	<resultMap type="StudyMemberDto" id="studyMemberMap">
-		<result property="study_group_member_id" column="STUDY_GROUP_MEMBER_ID" />
-		<result property="study_group_id" column="STUDY_GROUP_ID" />
-		<result property="member_email" column="MEMBER_EMAIL" />
-		<result property="role" column="ROLE" />
-	</resultMap>
-
 	<resultMap type="StudyDto" id="studyMap">
 		<result property="studygroupid" column="STUDY_GROUP_ID" />
 		<result property="studygroupname" column="STUDY_GROUP_NAME" />

@@ -47,6 +47,6 @@ public class StudyMemberController {
 		
 		System.out.println("스터디 번호 : " + dto.getStudyId());
 		
-		return null;//studymemberbiz.studyGetList(dto.getStudyId());
+		return studymemberbiz.studyGetList(Integer.parseInt(dto.getStudyId()));
 	}
 }

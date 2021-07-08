@@ -25,9 +25,7 @@ public class StudyIntroduceDaoImpl implements StudyIntroduceDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println("!!!!!!!!!!!!!?!!" + list);
-		
+				
 		return list;
 	}
 	

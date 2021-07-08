@@ -7,19 +7,11 @@
 		<result property="study_group_id" column="STUDY_GROUP_ID" />
 		<result property="member_email" column="MEMBER_EMAIL" />
 		<result property="role" column="ROLE" />
-		<result property="member_nickName" column="MEMBER_NICKNAME" />
-		<result property="member_phoneNumber" column="MEMBER_PHONENUMBER" />
-		<result property="meber_loc" column="MEMBER_LOC" />
+		<result property="member_nickname" column="MEMBER_NICKNAME" />
+		<result property="member_phonenumber" column="MEMBER_PHONENUMBER" />
+		<result property="member_loc" column="MEMBER_LOC" />
 	</resultMap>
-	
-	<select id="StudyMemberCount" parameterType="int">
-		SELECT COUNT(*)
-		FROM STUDY_GROUP_MEMBER
-		WHERE STUDY_GROUP_ID = #{studyId}
-	</select>
-	
-	
-	
+
 	<select id="selectOne" parameterType="String" resultType="string">
 		SELECT ROLE
 		FROM STUDY_GROUP_MEMBER

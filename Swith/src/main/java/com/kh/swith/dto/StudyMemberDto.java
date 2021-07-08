@@ -17,8 +17,8 @@ public class StudyMemberDto {
 	private String email;
 	private String studyId;
 	private String role;
-	private String member_nickName;
-	private String member_phoneNumber;
+	private String member_nickname;
+	private String member_phonenumber;
 	private String member_loc;
 
 }
