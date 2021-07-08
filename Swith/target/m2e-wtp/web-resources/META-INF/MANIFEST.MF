@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: Jinhyen
-Build-Jdk: 15.0.2
-=======
 Built-By: kwg94
 Build-Jdk: 11.0.9.1
->>>>>>> cine
 Created-By: Maven Integration for Eclipse
 

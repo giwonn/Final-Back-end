@@ -13,7 +13,9 @@ import lombok.ToString;
 @AllArgsConstructor
 public class StudyMemberDto {
 	
-	private String email;
-	private String studyId;
+	private int study_group_member;
+	private int study_group_id;
+	private String member_email;
+	private String role;
 
 }
