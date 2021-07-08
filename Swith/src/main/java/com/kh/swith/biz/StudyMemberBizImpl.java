@@ -15,11 +15,6 @@ public class StudyMemberBizImpl implements StudyMemberBiz {
 	private StudyMemberDao groupstudyDao;
 
 	@Override
-	public int selectMemberCount(int study_group_id) {
-		return groupstudyDao.selectMemberCount(study_group_id);
-	}
-	
-	@Override
 	public String selectRole(StudyMemberDto dto) {
 		return groupstudyDao.selectRole(dto);
 	}
