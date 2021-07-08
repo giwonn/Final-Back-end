@@ -9,6 +9,7 @@
 		<typeAlias type="com.kh.swith.dto.MemberDto" alias="MemberDto" />
 		<typeAlias type="com.kh.swith.dto.TodoMyDto" alias="TodoMyDto" />
 		<typeAlias type="com.kh.swith.dto.TodoStudyDto" alias="TodoStudyDto" />
+		<typeAlias type="com.kh.swith.dto.StudyGroupMemberDto" alias="StudyGroupMemberDto" />
 	</typeAliases>
 
 	<mappers>
@@ -18,6 +19,8 @@
 		<mapper resource="/mybatis/member-mapper.xml" />
 		<mapper resource="/mybatis/todolist-my-mapper.xml" />
 		<mapper resource="/mybatis/todolist-study-mapper.xml" />
+		<mapper resource="/mybatis/study-group-member-mapper.xml" />
+		<mapper resource="/mybatis/study-introduce-mapper.xml" />
 	</mappers>
 
 </configuration>
