@@ -14,8 +14,8 @@ import lombok.ToString;
 public class StudyMemberDto {
 	
 	private int study_group_member;
-	private int study_group_id;
-	private String member_email;
+	private String email;
+	private String studyId;
 	private String role;
 	private String member_nickName;
 	private String member_phoneNumber;

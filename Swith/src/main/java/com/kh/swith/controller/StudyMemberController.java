@@ -45,8 +45,8 @@ public class StudyMemberController {
 		
 		logger.info("[GroupStudyController] groupStudySelectRole.do");
 		
-		System.out.println(dto.getMember_email());
-		System.out.println(dto.getStudy_group_id());
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getStudyId());
 		String res = studymemberbiz.selectRole(dto);
 		System.out.println("role : " + res);
 		
@@ -59,8 +59,8 @@ public class StudyMemberController {
 		
 		logger.info("[GroupStudyController] groupStudygetList.do");
 		
-		System.out.println("스터디 번호 : " + dto.getStudy_group_id());
+		System.out.println("스터디 번호 : " + dto.getStudyId());
 		
-		return null;//studymemberbiz.studyGetList(dto.getStudy_group_id());
+		return null;//studymemberbiz.studyGetList(dto.getStudyId());
 	}
 }

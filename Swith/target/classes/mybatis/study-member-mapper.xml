@@ -15,7 +15,7 @@
 	<select id="StudyMemberCount" parameterType="int">
 		SELECT COUNT(*)
 		FROM STUDY_GROUP_MEMBER
-		WHERE STUDY_GROUP_ID = #{study_group_id}
+		WHERE STUDY_GROUP_ID = #{studyId}
 	</select>
 	
 	
