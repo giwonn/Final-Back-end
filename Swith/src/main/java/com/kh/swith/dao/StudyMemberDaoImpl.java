@@ -16,19 +16,6 @@ public class StudyMemberDaoImpl implements StudyMemberDao {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public int selectMemberCount(int study_group_id) {
-		int res = 0;
-		try {
-			res = sqlSession.selectOne("swith.studymembermapper.StudyMemberCount", study_group_id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return res;
-	}
-	
-	
-	@Override
 	public String selectRole(StudyMemberDto dto) {
 		String role = null;
 		try {
