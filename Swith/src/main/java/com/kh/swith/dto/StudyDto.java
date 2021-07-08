@@ -24,4 +24,5 @@ public class StudyDto {
 	private String studygroupadmin;
 	private String studygrouppw;
 	private int studyusercnt;
+	private int study_member_count;
 }

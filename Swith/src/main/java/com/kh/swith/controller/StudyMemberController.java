@@ -25,20 +25,6 @@ public class StudyMemberController {
 	@Autowired
 	private StudyMemberBiz studymemberbiz;
 	
-	
-	@RequestMapping(value="groupStudygetCount.do", method = RequestMethod.POST)
-	@ResponseBody
-	public int groupStudygetCount(@RequestBody String study_group_id) {
-		logger.info("[GroupStudyController] groupStudygetCount.do");
-		
-		System.out.println("groupStudygetCount : " + study_group_id);
-		
-		int res = studymemberbiz.selectMemberCount(Integer.parseInt(study_group_id));
-		
-		return res;
-	}
-	
-	
 	@RequestMapping(value="groupStudySelectRole.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String selectRole(@RequestBody StudyMemberDto dto) {

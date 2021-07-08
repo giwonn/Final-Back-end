@@ -26,6 +26,8 @@ public class StudyIntroduceDaoImpl implements StudyIntroduceDao {
 			e.printStackTrace();
 		}
 		
+		System.out.println("!!!!!!!!!!!!!?!!" + list);
+		
 		return list;
 	}
 	
