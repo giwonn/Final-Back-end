@@ -25,7 +25,7 @@ public class StudyMemberBizImpl implements StudyMemberBiz {
 	}
 
 	@Override
-	public List<StudyMemberDto> studyGetList(String studyId) {
+	public List<StudyMemberDto> studyGetList(int studyId) {
 		return groupstudyDao.studyGetList(studyId);
 	}
 

@@ -55,12 +55,12 @@ public class StudyMemberController {
 	
 	@RequestMapping(value="groupStudygetList.do", method = RequestMethod.POST)
 	@ResponseBody
-	public List<StudyMemberDto> studyGetList(@RequestBody String studyId){
+	public List<StudyMemberDto> studyGetList(@RequestBody StudyMemberDto dto){
 		
 		logger.info("[GroupStudyController] groupStudygetList.do");
 		
-		System.out.println("스터디 번호 : " + studyId);
+		System.out.println("스터디 번호 : " + dto.getStudy_group_id());
 		
-		return studymemberbiz.studyGetList(studyId);
+		return null;//studymemberbiz.studyGetList(dto.getStudy_group_id());
 	}
 }

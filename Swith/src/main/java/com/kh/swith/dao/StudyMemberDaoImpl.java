@@ -41,7 +41,7 @@ public class StudyMemberDaoImpl implements StudyMemberDao {
 	}
 
 	@Override
-	public List<StudyMemberDto> studyGetList(String studyId) {
+	public List<StudyMemberDto> studyGetList(int studyId) {
 		List<StudyMemberDto> list = new ArrayList<StudyMemberDto>();
 		
 		try {

@@ -8,6 +8,6 @@ public interface StudyMemberDao {
 	
 	public int selectMemberCount(int study_group_id);
 	public String selectRole(StudyMemberDto dto);
-	public List<StudyMemberDto> studyGetList(String studyId);
+	public List<StudyMemberDto> studyGetList(int studyId);
 
 }
