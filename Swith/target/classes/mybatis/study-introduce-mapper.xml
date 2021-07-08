@@ -17,9 +17,10 @@
 		<result property="studyusercnt" column="STUDY_USERCNT" />
 		<result property="study_member_count" column="STUDY_MEMBER_COUNT" />
 	</resultMap>
-	
 
-	<select id="studyIntroduceSelectOne" parameterType="int" resultMap="studyMap">
+
+	<select id="studyIntroduceSelectOne" parameterType="int"
+		resultMap="studyMap">
 		SELECT
 		SG.STUDY_GROUP_ID,
 		STUDY_GROUP_NAME,
@@ -29,7 +30,9 @@
 		STUDY_GROUP_LAT,
 		STUDY_GROUP_ADDR,
 		STUDY_GROUP_ADMIN,
-		COUNT(*) OVER(PARTITION BY SGM.STUDY_GROUP_MEMBER_ID) AS STUDY_MEMBER_COUNT
+		(SELECT COUNT(*) AS STUDY_MEMBER_COUNT
+		FROM STUDY_GROUP_MEMBER
+		WHERE STUDY_GROUP_ID = #{study_group_id}) AS STUDY_MEMBER_COUNT
 		FROM STUDY_GROUP_MEMBER SGM, STUDY_GROUP SG
 		WHERE SG.STUDY_GROUP_ID = #{study_group_id}
 		AND SG.STUDY_GROUP_ID = SGM.STUDY_GROUP_ID
