@@ -56,7 +56,7 @@
 		
 	</insert>
 	
-	<select id="searchList" resultType="studyMap" parameterType="String">
+	<select id="searchList" resultMap="studyMap" parameterType="string">
 		SELECT
 		STUDY_GROUP_ID, 
 			STUDY_GROUP_NAME, 
