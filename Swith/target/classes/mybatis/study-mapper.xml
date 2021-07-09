@@ -56,9 +56,9 @@
 		
 	</insert>
 	
-	<select id="searchList" resultMap="studyMap" parameterType="string">
+	<select id="searchList" resultMap="studyMap" parameterType="String">
 		SELECT
-		STUDY_GROUP_ID, 
+			STUDY_GROUP_ID, 
 			STUDY_GROUP_NAME, 
 			STUDY_GROUP_DESC, 
 			STUDY_GROUP_OFFLINE, 
@@ -68,7 +68,7 @@
 			STUDY_GROUP_PW
 		FROM STUDY_GROUP
 		WHERE 1=1
-		AND (STUDY_GROUP_NAME LIKE '%#{searched}%')
+		AND (STUDY_GROUP_NAME LIKE '%'||#{searched}||'%')
 		ORDER BY STUDY_GROUP_ID DESC
 	</select>
 	

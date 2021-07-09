@@ -23,8 +23,8 @@ public class StudyBizImpl implements StudyBiz{
 	}
 	
 	@Override
-	public List<StudyDto> searchStudyList(String str){
-		return dao.searchStudyList(str);
+	public List<StudyDto> searchStudyList(String search){
+		return dao.searchStudyList(search);
 	}
 
 	@Override
