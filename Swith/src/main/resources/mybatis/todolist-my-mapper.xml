@@ -10,6 +10,7 @@
 		<result property="content" column="CONTENT" />
 		<result property="isdone" column="IS_DONE" />
 		<result property="memberemail" column="MEMBER_EMAIL" />
+		<result property="membernickname" column="MEMBER_NICKNAME" />
 		<result property="createdat" column="CREATEDAT" />
 		<result property="doneat" column="DONEAT" />
 	</resultMap>
@@ -25,6 +26,7 @@
 				CONTENT,
 				IS_DONE,
 				MEMBER_EMAIL,
+				MEMBER_NICKNAME,
 				CREATEDAT
 			)
 		VALUES
@@ -34,6 +36,10 @@
 				#{content},
 				0,
 				#{memberemail},
+				( 
+					SELECT MEMBER_NICKNAME FROM MEMBER 
+					WHERE MEMBER_EMAIL = #{memberemail} 
+				) ,
 				SYSDATE
 			)
 	</insert>
@@ -46,9 +52,9 @@
 				CONTENT,
 				IS_DONE,
 				MEMBER_EMAIL,
+				MEMBER_NICKNAME,
 				CREATEDAT,
 				DONEAT
-			
 		FROM TO_DO_LIST_MY
 		WHERE 
 			MEMBER_EMAIL = #{memberemail}

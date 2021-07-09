@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.swith.biz.TodoMyBiz;
+import com.kh.swith.dao.FeedDao;
+import com.kh.swith.dto.FeedDto;
 import com.kh.swith.dto.TodoMyDto;
 
 @Controller
@@ -25,6 +27,9 @@ public class TodoMyController {
 	
 	@Autowired
 	private TodoMyBiz biz;
+	
+	@Autowired
+	private FeedDao dao;
 	
 	// ========================== insert to do ========================== // 
 	@RequestMapping(value="/mytodo.do", method=RequestMethod.POST)
@@ -101,17 +106,24 @@ public class TodoMyController {
 	// ========================== toggle to do ========================== //
 	@RequestMapping(value="/mytodo.do", method=RequestMethod.PATCH)
 	@ResponseBody
-	public Map toggleMyTodo (@RequestParam String id) {
+	public Map toggleMyTodo (@RequestBody TodoMyDto todoDto) {
 		Map map = new HashMap();
 		
-		if(id == null || id== "") {
-			map.put("success", "false");
-			return map;
-		}
-		int res = biz.toggleMyTodo(Integer.parseInt(id));
+		int id = todoDto.getTodomyid();
+		int res = biz.toggleMyTodo(id);
+		
+		System.out.println("res = " +res);
 		
 		if(res > 0) {
 			map.put("success" , "true");
+			//============ toggle todo성공 ========//
+			
+			FeedDto feedDto = new FeedDto();
+			
+			feedDto.setMemberemail(todoDto.getMemberemail());
+			feedDto.setFeedcontent( todoDto.getMembernickname() + "님이 " + todoDto.getContent() + "을 성공하셨습니다. ");
+			
+			dao.insertFeed(feedDto);
 			map.put("id" ,id);
 		}else {
 			map.put("success", "false");

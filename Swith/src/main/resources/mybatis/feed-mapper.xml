@@ -39,19 +39,20 @@
 	END<![CDATA[;]]>
 	</insert>
 	
-	<select id="selectFeeds" parameterType="String">
-	SELECT (
+	<select id="selectFeeds" resultType="FeedDto" parameterType="String">
+	SELECT 
 		FEED_ID,
 		FEED_CONTENT,
 		STUDY_GROUP_ID,
 		MEMBER_EMAIL,
 		CREATED_AT
-	) FROM FEED 
+	 FROM FEED 
 		WHERE STUDY_GROUP_ID IN
 		(
 			SELECT STUDY_GROUP_ID
 			FROM STUDY_GROUP_MEMBER
 			WHERE MEMBER_EMAIL = #{memberemail}
 		)
+		AND MEMBER_EMAIL != #{memberemail} 
 	</select> 
 </mapper>
