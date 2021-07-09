@@ -19,7 +19,7 @@
 	</select>
 	
 	<insert id="insert" parameterType="MemberDto">
-		INSERT INTO MEMBER
+		INSERT INTO MEMBER (MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PHONENUMBER, MEMBER_LOC, MEMBER_IMG, MEMBER_INTRO)
 		VALUES(#{email}, #{nickName}, #{phoneNumber}, #{location}, NULL, #{intro})
 	</insert>
 

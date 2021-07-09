@@ -21,7 +21,8 @@ public class StudyDto {
 	private String studygrouplat;
 	private String studygrouplng;
 	private String studygroupaddr;
+	private String studygroupadmin;
 	private String studygrouppw;
 	private int studyusercnt;
-	
+	private int study_member_count;
 }

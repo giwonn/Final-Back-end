@@ -36,6 +36,7 @@ public class LogFilter implements Filter {
 
 		String referer = req.getHeader("referer");
 		String agent = req.getHeader("User-Agent");
+		String authorization = req.getHeader("Authorization");
 
 		StringBuffer sb = new StringBuffer();
 		sb.append("\n* remoteAddr : " + remoteAddr) // ip 주소
@@ -44,6 +45,7 @@ public class LogFilter implements Filter {
 				.append("\n* queryString : " + queryString) // 경로 뒤에 있는 요청 쿼리 문자열 (key=value 형태)
 				.append("\n* referer : " + referer) // 이전 페이지의 url (getHeader : 지정한 요청 헤더값을 문자열로 반환)
 				.append("\n* agent : " + agent) // 사용자 정보 (browser version, os 등)
+				.append("\n* authorization : " + authorization) // authorization 헤더의 값. 
 				.append("\n");
 
 		HttpServletResponse resp = (HttpServletResponse) response;
@@ -51,9 +53,9 @@ public class LogFilter implements Filter {
 		
 		resp.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
 	    resp.setHeader("Access-Control-Allow-Credentials", "true");
-		resp.setHeader("Access-Control-Allow-Methods", "GET, POST");
+		resp.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, OPTIONS, DELETE ");
 		resp.setHeader("Access-Control-Max-Age", "10");
-		resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
+		resp.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me, Email ");
 
 		logger.info("\nLOG Filter" + sb);
 

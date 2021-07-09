@@ -36,7 +36,19 @@ public class CalendarDaoImpl implements CalendarDao {
 			e.printStackTrace();
 		}
 		
-		System.out.println("testestestestest = "+list);
+		return list;
+	}
+	
+	@Override
+	public List<CalendarDto> calendarSelectStudy(int study_group_id) {
+		
+		List<CalendarDto> list = new ArrayList<CalendarDto>();
+		
+		try {
+			list = sqlSession.selectList("swith.calendarmapper.selectStudy", study_group_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return list;
 	}

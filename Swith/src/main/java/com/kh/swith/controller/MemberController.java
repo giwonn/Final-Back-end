@@ -16,27 +16,27 @@ import com.kh.swith.dto.MemberDto;
 @Controller
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
+
 	@Autowired
 	private MemberBiz memberBiz;
-	
-	@RequestMapping(value="/MemberCheck.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/MemberCheck.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String selectMember(@RequestBody MemberDto dto) {
-		
+
 		System.out.println(dto.getEmail());
-		
+
 		String res = memberBiz.MemberSelect(dto.getEmail());
-		
+
 		System.out.println(res);
-		
-		if(res==null) {
+
+		if (res == null) {
 			return "NotUser";
-		}	
+		}
 		return res;
 	}
-	
-	@RequestMapping(value="/MemberInsert.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/MemberInsert.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String InsertMember(@RequestBody MemberDto memberDto) {
 		System.out.println("Test : " + memberDto.getEmail());
@@ -44,11 +44,11 @@ public class MemberController {
 		System.out.println("Test : " + memberDto.getPhoneNumber());
 		System.out.println("Test : " + memberDto.getIntro());
 		System.out.println("Test : " + memberDto.getLocation());
-		
+
 		if (memberBiz.MemberInsert(memberDto) > 0) {
 			return "회원가입성공!";
 		}
-		
+
 		return "회원가입실패!";
 	}
 }
