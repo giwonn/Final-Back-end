@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="swith.calendarmapper">
 
-	<resultMap type="calendarDto" id="calendarMap">
+	<resultMap type="CalendarDto" id="calendarMap">
 		<result property="calendar_id" column="CALENDAR_ID" />
 		<result property="member_email" column="MEMBER_EMAIL" />
 		<result property="study_group_id" column="STUDY_GROUP_ID" />
@@ -25,6 +25,13 @@
 		WHERE MEMBER_EMAIL = #{member_email}
 		ORDER BY CALENDAR_ID DESC
 	</select>
+	
+	<select id="selectStudy" parameterType="int" resultMap="calendarMap">
+		SELECT CALENDAR_ID, MEMBER_EMAIL, STUDY_GROUP_ID, TITLE, START_DATE, END_DATE, CONTENT, REGDATE
+		FROM CALENDAR
+		WHERE STUDY_GROUP_ID = #{study_group_id}
+		ORDER BY CALENDAR_ID DESC
+	</select>
 
 	<insert id="insert" parameterType="calendarDto">
 		INSERT INTO CALENDAR
@@ -34,11 +41,11 @@
 	<update id="update" parameterType="calendarDto">
 		UPDATE CALENDAR
 		<set> 
+			CALENDAR_ID = #{calendar_id},
 			<if test='title != null and content != ""'>TITLE = #{title},</if>
 			<if test='content != null and content != ""'>CONTENT = #{content},</if>
 			<if test='start != null and content != ""'>START_DATE = #{start},</if>
-			<if test='end != null and content != ""'>END_DATE = #{end},</if>
-			CALENDAR_ID = #{calendar_id}
+			<if test='end != null and content != ""'>END_DATE = #{end}</if>
 		</set>
 		WHERE CALENDAR_ID = #{calendar_id}
 	</update>

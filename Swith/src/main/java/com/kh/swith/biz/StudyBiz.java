@@ -10,6 +10,7 @@ public interface StudyBiz {
 	public List<StudyDto> selectStudyList(Map<String, Float> map);
 	public List<StudyDto> searchStudyList(String str);
 	public StudyDto selectOneStudy(int study_group_id);
-	public int insertStudy(StudyDto dto);
+	public List<StudyDto> selectMyStudyList(String usermail);
+	public int insertStudy(StudyDto dto, String memberemail);
 	public int updateStudy(StudyDto dto);
 }
