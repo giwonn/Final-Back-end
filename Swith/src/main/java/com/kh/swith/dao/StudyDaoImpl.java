@@ -28,10 +28,11 @@ public class StudyDaoImpl implements StudyDao{
 	}
 	
 	@Override
-	public List<StudyDto> searchStudyList(String str){
+	public List<StudyDto> searchStudyList(String searched){
 		List<StudyDto> resList = new ArrayList<StudyDto>();
+		System.out.println("search text = " + searched);
 		try {
-			resList = sqlSession.selectList(NAMESPACE + "searchList", str);
+			resList = sqlSession.selectList(NAMESPACE + "searchList", searched);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
