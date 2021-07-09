@@ -55,6 +55,23 @@
 		)
 		
 	</insert>
+	
+	<select id="searchList" resultType="studyMap" parameterType="String">
+		SELECT
+		STUDY_GROUP_ID, 
+			STUDY_GROUP_NAME, 
+			STUDY_GROUP_DESC, 
+			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_LNG, 
+			STUDY_GROUP_LAT,
+			STUDY_GROUP_ADDR,
+			STUDY_GROUP_PW
+		FROM STUDY_GROUP
+		WHERE 1=1
+		AND (STUDY_GROUP_NAME LIKE '%#{searched}%')
+		ORDER BY STUDY_GROUP_ID DESC
+	</select>
+	
 	<select id="selectList" resultMap="studyMap" parameterType="hashMap">
 		<![CDATA[
 		SELECT 
@@ -75,7 +92,7 @@
 		]]>
 	</select>
 	
-	
+	<!-- 반경, 좌표 불러오는 다른 sql (임시) -->
 	<!-- <select id="selectList" resultMap="studyMap" parameterType="hashMap">
 		<![CDATA[
 		SELECT *,
@@ -86,6 +103,7 @@
 		ORDER BY distance 
 		]]>
 	</select> -->
+	
 	
 
 	<select id="selectListByUserEmail" resultMap="studyMap" parameterType="String">

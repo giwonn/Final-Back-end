@@ -12,6 +12,7 @@ public interface StudyDao {
 	public String NAMESPACE = "swith.studymapper.";
 	
 	public List<StudyDto> selectStudyList(Map<String, Float> map);
+	public List<StudyDto> searchStudyList(String str);
 	public StudyDto selectOneStudy(int study_group_id);
 	public List<StudyDto> selectMyStudyList(String memberemail);
 	public int insertStudy(StudyDto dto);

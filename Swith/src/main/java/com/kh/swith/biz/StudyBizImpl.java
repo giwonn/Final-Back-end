@@ -21,6 +21,11 @@ public class StudyBizImpl implements StudyBiz{
 	public List<StudyDto> selectStudyList(Map<String, Float> map) {
 		return dao.selectStudyList(map);
 	}
+	
+	@Override
+	public List<StudyDto> searchStudyList(String str){
+		return dao.searchStudyList(str);
+	}
 
 	@Override
 	public StudyDto selectOneStudy(int study_group_id) {
