@@ -26,6 +26,17 @@ public class StudyDaoImpl implements StudyDao{
 		}
 		return resList;
 	}
+	
+	@Override
+	public List<StudyDto> searchStudyList(String str){
+		List<StudyDto> resList = new ArrayList<StudyDto>();
+		try {
+			resList = sqlSession.selectList(NAMESPACE + "searchList", str);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resList;
+	}
 
 	@Override
 	public StudyDto selectOneStudy(int study_group_id) {

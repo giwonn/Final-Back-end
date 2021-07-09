@@ -47,6 +47,17 @@ public class StudyController {
 		return new ArrayList<StudyDto>(biz.selectStudyList(map));
 	}
 	
+
+	@RequestMapping(value="searchstudy.do", method=RequestMethod.GET)
+	@ResponseBody
+	public List<StudyDto> searchStudyList(@RequestParam(value="searched") String searched){
+		
+		String str = new String();
+		str = searched;
+		
+		return new ArrayList<StudyDto>(biz.searchStudyList(str));
+	}
+	
 	@RequestMapping(value="study.do", method=RequestMethod.POST )
 	@ResponseBody
 	public Map<String, String> insertStudy(@RequestBody StudyDto dto){
@@ -59,4 +70,5 @@ public class StudyController {
 	
 		return resMap;
 	}
+	
 }
