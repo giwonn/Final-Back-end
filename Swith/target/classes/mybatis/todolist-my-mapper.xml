@@ -54,6 +54,7 @@
 			MEMBER_EMAIL = #{memberemail}
 			AND 
 			TO_CHAR(CREATEDAT,'yyyymmdd') = TO_CHAR(SYSDATE,'yyyymmdd') 
+		ORDER BY TODO_MY_ID 
 	</select>
 	
 	<delete id="deleteTodo" parameterType="int">
