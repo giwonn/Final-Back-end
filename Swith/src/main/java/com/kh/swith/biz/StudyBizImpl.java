@@ -51,8 +51,7 @@ public class StudyBizImpl implements StudyBiz{
 
 	@Override
 	public int updateStudy(StudyDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.updateStudy(dto);
 	}
 
 	@Override
