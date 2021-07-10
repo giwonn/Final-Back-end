@@ -1,5 +1,7 @@
 package com.kh.swith.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +47,28 @@ public class StudyController {
 		map.put("dist", dist);
 		
 		return new ArrayList<StudyDto>(biz.selectStudyList(map));
+	}
+	
+
+	@RequestMapping(value="searchstudy.do", method=RequestMethod.GET)
+	@ResponseBody
+	public List<StudyDto> searchStudyList(@RequestParam(value="searched") String searched){
+		
+		Map map;
+		List res = new ArrayList<StudyDto>();
+		System.out.println(searched);
+		try {
+			String tmpStr = URLDecoder.decode(searched, "UTF-8");
+			System.out.println(tmpStr);
+//			map = new HashMap<String, String>();
+//			map.put("searched", tmpStr);
+			res = biz.searchStudyList(tmpStr);
+			System.out.println("res = "+res);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 	
 	@RequestMapping(value="study.do", method=RequestMethod.POST )
