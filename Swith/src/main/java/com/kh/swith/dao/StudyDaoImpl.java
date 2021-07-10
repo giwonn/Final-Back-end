@@ -26,6 +26,18 @@ public class StudyDaoImpl implements StudyDao{
 		}
 		return resList;
 	}
+	
+	@Override
+	public List<StudyDto> searchStudyList(String searched){
+		List<StudyDto> resList = new ArrayList<StudyDto>();
+		System.out.println("search text = " + searched);
+		try {
+			resList = sqlSession.selectList(NAMESPACE + "searchList", searched);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resList;
+	}
 
 	@Override
 	public StudyDto selectOneStudy(int study_group_id) {
@@ -52,8 +64,13 @@ public class StudyDaoImpl implements StudyDao{
 
 	@Override
 	public int updateStudy(StudyDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		try {
+			res = sqlSession.update(NAMESPACE+ "updateStudy", dto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override

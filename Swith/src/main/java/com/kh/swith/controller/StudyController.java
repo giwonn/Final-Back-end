@@ -1,5 +1,7 @@
 package com.kh.swith.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +49,28 @@ public class StudyController {
 		return new ArrayList<StudyDto>(biz.selectStudyList(map));
 	}
 	
+
+	@RequestMapping(value="searchstudy.do", method=RequestMethod.GET)
+	@ResponseBody
+	public List<StudyDto> searchStudyList(@RequestParam(value="searched") String searched){
+		
+		Map map;
+		List res = new ArrayList<StudyDto>();
+		System.out.println(searched);
+		try {
+			String tmpStr = URLDecoder.decode(searched, "UTF-8");
+			System.out.println(tmpStr);
+//			map = new HashMap<String, String>();
+//			map.put("searched", tmpStr);
+			res = biz.searchStudyList(tmpStr);
+			System.out.println("res = "+res);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
 	@RequestMapping(value="study.do", method=RequestMethod.POST )
 	@ResponseBody
 	public Map<String, String> insertStudy(@RequestBody StudyDto dto,  @RequestHeader("Email") String usermail ){
@@ -75,4 +99,36 @@ public class StudyController {
 		return resList;
 	}
 	
+	@RequestMapping(value="study.do", method=RequestMethod.GET)
+	@ResponseBody
+	public Map selectOneStudy(@RequestParam("id") String id) {
+		Map res = new HashMap();
+		
+		StudyDto dto = new StudyDto();
+		dto = biz.selectOneStudy(Integer.parseInt(id));
+		int resid = dto.getStudygroupid();
+
+		if(resid != 0) {
+			res.put("study", dto);
+			res.put("success", "true");
+		}else {
+			res.put("success", "false");
+		}
+		
+		return res;
+	}
+	
+	@RequestMapping(value="study.do", method=RequestMethod.PUT)
+	@ResponseBody
+	public Map updateStudy(@RequestBody StudyDto dto) {
+		Map resMap = new HashMap();
+		
+		int res = biz.updateStudy(dto);
+		if(res > 0) {
+			resMap.put("success", "true");
+		}else {
+			resMap.put("success", "false");
+		}
+		return resMap;
+	}
 }
