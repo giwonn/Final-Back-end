@@ -43,4 +43,18 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
+	@Override
+	public int updateProfile(MemberDto memberDto) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.update("swith.membermapper.update", memberDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("update res : " + res);
+		
+		return res;
+	}
+
 }

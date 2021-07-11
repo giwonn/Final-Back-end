@@ -21,6 +21,11 @@ public class MemberBizImpl implements MemberBiz {
 	public int MemberInsert(MemberDto memberDto) {
 		return memberDao.MemberInsert(memberDto);
 	}
+
+	@Override
+	public int updateProfile(MemberDto memberDto) {
+		return memberDao.updateProfile(memberDto);
+	}
 	
 	
 }

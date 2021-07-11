@@ -22,6 +22,17 @@
 		INSERT INTO MEMBER (MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PHONENUMBER, MEMBER_LOC, MEMBER_IMG, MEMBER_INTRO)
 		VALUES(#{email}, #{nickName}, #{phoneNumber}, #{location}, NULL, #{intro})
 	</insert>
+	
+	<update id="update" parameterType="MemberDto">
+		UPDATE MEMBER
+		<set>
+			MEMBER_NICKNAME = #{nickName},
+			MEMBER_PHONENUMBER = #{phoneNumber},
+			MEMBER_LOC = #{location},
+			MEMBER_INTRO = #{intro}
+		</set>
+		WHERE MEMBER_EMAIL = #{email}
+	</update>
 
 
 </mapper>

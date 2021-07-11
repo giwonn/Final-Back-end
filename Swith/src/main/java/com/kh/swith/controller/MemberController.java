@@ -51,4 +51,18 @@ public class MemberController {
 
 		return "회원가입실패!";
 	}
+	
+	@RequestMapping(value = "/MyProfile.do", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean updateProfile(@RequestBody MemberDto dto) {
+		
+		logger.info("[MemberController] MyProfile.do");
+
+		System.out.println("update : " + dto.getEmail());
+//		if (memberBiz.updateProfile(dto) > 0) {
+//			return true;
+//		}
+
+		return false;
+	}
 }
