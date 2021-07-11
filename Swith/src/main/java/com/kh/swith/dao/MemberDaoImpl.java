@@ -1,5 +1,8 @@
 package com.kh.swith.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,13 +45,27 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
+	
+	@Override
+	public List<MemberDto> profileSelect(String email) {
+		
+		List<MemberDto> list = new ArrayList<MemberDto>();
+		
+		try {
+			list = sqlSession.selectList("swith.membermapper.profileSelect", email);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 
 	@Override
-	public int updateProfile(MemberDto memberDto) {
+	public int profileUpdate(MemberDto memberDto) {
 		int res = 0;
 		
 		try {
-			res = sqlSession.update("swith.membermapper.update", memberDto);
+			res = sqlSession.update("swith.membermapper.profileUpdate", memberDto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -56,5 +73,6 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
+
 
 }

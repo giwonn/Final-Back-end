@@ -1,5 +1,7 @@
 package com.kh.swith.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +25,15 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public int updateProfile(MemberDto memberDto) {
-		return memberDao.updateProfile(memberDto);
+	public List<MemberDto> profileSelect(String email) {
+		return memberDao.profileSelect(email);
 	}
+	
+	@Override
+	public int profileUpdate(MemberDto memberDto) {
+		return memberDao.profileUpdate(memberDto);
+	}
+
 	
 	
 }

@@ -1,5 +1,8 @@
 package com.kh.swith.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.swith.biz.MemberBiz;
@@ -52,16 +54,33 @@ public class MemberController {
 		return "회원가입실패!";
 	}
 	
-	@RequestMapping(value = "/MyProfile.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/profileSelect.do", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean updateProfile(@RequestBody MemberDto dto) {
+	public List<MemberDto> profileSelect(@RequestBody MemberDto memberDto) {
 		
-		logger.info("[MemberController] MyProfile.do");
+		//email = email.split("%40")[0] + "@" + email.split("%40")[1];
+		//email = email.split("=")[0];
+		
+		System.out.println(memberDto.getEmail());
+		
+		List<MemberDto> list = new ArrayList<MemberDto>();
+
+		list = memberBiz.profileSelect(memberDto.getEmail());
+		
+
+		return list;
+	}
+	
+	@RequestMapping(value = "/profileUpdate.do", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean profileUpdate(@RequestBody MemberDto dto) {
+		
+		logger.info("[MemberController] profileUpdate.do");
 
 		System.out.println("update : " + dto.getEmail());
-//		if (memberBiz.updateProfile(dto) > 0) {
-//			return true;
-//		}
+		if (memberBiz.profileUpdate(dto) > 0) {
+			return true;
+		}
 
 		return false;
 	}

@@ -23,7 +23,13 @@
 		VALUES(#{email}, #{nickName}, #{phoneNumber}, #{location}, NULL, #{intro})
 	</insert>
 	
-	<update id="update" parameterType="MemberDto">
+	<select id="profileSelect" parameterType="String" resultMap="memberMap">
+		SELECT MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PHONENUMBER, MEMBER_LOC, MEMBER_IMG, MEMBER_INTRO
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{email}
+	</select>
+	
+	<update id="profileUpdate" parameterType="MemberDto">
 		UPDATE MEMBER
 		<set>
 			MEMBER_NICKNAME = #{nickName},
