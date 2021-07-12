@@ -53,11 +53,10 @@
 				,#{studygrouppw}
 			</if>
 		)
-		
 	</insert>
-	<select id="selectList" resultMap="studyMap" parameterType="hashMap">
-		<![CDATA[
-		SELECT 
+	
+	<select id="searchList" resultMap="studyMap" parameterType="String">
+		SELECT
 			STUDY_GROUP_ID, 
 			STUDY_GROUP_NAME, 
 			STUDY_GROUP_DESC, 
@@ -68,14 +67,32 @@
 			STUDY_GROUP_PW
 		FROM STUDY_GROUP
 		WHERE 1=1
-		AND (STUDY_GROUP_LAT BETWEEN #{lat}-(#{dist}*0.000001) AND #{lat}+(#{dist}*0.000001))
-		AND (STUDY_GROUP_LNG BETWEEN #{lng}-(#{dist}*0.000001) AND #{lng}+(#{dist}*0.000001))
-		AND (SQRT(POWER(#{lat}-STUDY_GROUP_LAT, 2) + POWER(#{lng}-STUDY_GROUP_LNG, 2)) / 2 <= (#{dist}*0.000001))
+		AND (STUDY_GROUP_NAME LIKE '%'||#{searched}||'%')
+		ORDER BY STUDY_GROUP_ID DESC
+	</select>
+	
+	<select id="selectList" resultMap="studyMap" parameterType="hashMap">
+		<![CDATA[
+		SELECT 
+			STUDY_GROUP_ID, 
+			STUDY_GROUP_NAME, 
+			STUDY_GROUP_DESC, 
+			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_AREA,
+			STUDY_GROUP_LNG, 
+			STUDY_GROUP_LAT,
+			STUDY_GROUP_ADDR,
+			STUDY_GROUP_PW
+		FROM STUDY_GROUP
+		WHERE 1=1
+		AND (STUDY_GROUP_LAT BETWEEN #{lat}-(#{dist}*0.00001) AND #{lat}+(#{dist}*0.00001))
+		AND (STUDY_GROUP_LNG BETWEEN #{lng}-(#{dist}*0.00001) AND #{lng}+(#{dist}*0.00001))
+		AND (SQRT(POWER(#{lat}-STUDY_GROUP_LAT, 2) + POWER(#{lng}-STUDY_GROUP_LNG, 2)) / 2 <= (#{dist}*0.000005))
 		ORDER BY STUDY_GROUP_ID DESC
 		]]>
 	</select>
 	
-	
+	<!-- 반경, 좌표 불러오는 다른 sql (임시) -->
 	<!-- <select id="selectList" resultMap="studyMap" parameterType="hashMap">
 		<![CDATA[
 		SELECT *,
@@ -87,6 +104,7 @@
 		]]>
 	</select> -->
 	
+	
 
 	<select id="selectListByUserEmail" resultMap="studyMap" parameterType="String">
 		SELECT 
@@ -94,6 +112,7 @@
 			STUDY_GROUP_NAME, 
 			STUDY_GROUP_DESC, 
 			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_AREA,
 			STUDY_GROUP_LNG, 
 			STUDY_GROUP_LAT,
 			STUDY_GROUP_ADDR,
@@ -121,7 +140,7 @@
 		)
 	</insert>
 	
-	<select id="selectStudyById" parameterType="int">
+	<select id="selectStudyById" parameterType="int" resultMap="studyMap">
 		SELECT 
 			STUDY_GROUP_ID, 
 			STUDY_GROUP_NAME, 
@@ -129,10 +148,23 @@
 			STUDY_GROUP_OFFLINE, 
 			STUDY_GROUP_LNG, 
 			STUDY_GROUP_LAT,
+			STUDY_GROUP_AREA,
 			STUDY_GROUP_ADDR,
 			STUDY_GROUP_ADMIN
 		FROM STUDY_GROUP
 		WHERE STUDY_GROUP_ID = #{studygroupid}
 	</select>
+
+	<update id="updateStudy" parameterType="StudyDto">
+		UPDATE STUDY_GROUP
+		<set>
+			STUDY_GROUP_NAME = #{studygroupname}, 
+			STUDY_GROUP_DESC = #{studygroupdesc}
+			<if test='studygrouppw != null and studygrouppw != ""'>			
+				, STUDY_GROUP_PW = #{studygrouppw}
+			</if>
+		</set>
+		WHERE STUDY_GROUP_ID = #{studygroupid}
+	</update>
 </mapper>
 

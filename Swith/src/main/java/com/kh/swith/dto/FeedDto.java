@@ -6,20 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class TodoMyDto {
-	private int todomyid;
-	private String title;
-	private String content;
-	private int isdone;
+public class FeedDto {
+	private int feedid;
+	private String feedcontent;
+	private int studygroupid;
 	private String memberemail;
-	private String membernickname;
 	private Date createdat;
-	private Date doneat;
 }
