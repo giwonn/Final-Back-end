@@ -25,4 +25,5 @@ public class StudyDto {
 	private String studygrouppw;
 	private int studyusercnt;
 	private int study_member_count;
+	private int study_waiting_count;
 }
