@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: arran
+=======
+Built-By: kwg94
+>>>>>>> main
 Build-Jdk: 11.0.9.1
 Created-By: Maven Integration for Eclipse
 
