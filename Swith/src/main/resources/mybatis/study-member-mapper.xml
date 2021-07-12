@@ -24,6 +24,7 @@
 		FULL OUTER JOIN STUDY_GROUP_MEMBER B
 		ON A.MEMBER_EMAIL = B.MEMBER_EMAIL
 		WHERE STUDY_GROUP_ID = #{studyId}
+		AND ROLE != 'waiting'
 	</select>
 	
 	<insert id="studySignIn">
