@@ -1,5 +1,19 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: arran
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+Built-By: Jinhyen
+Build-Jdk: 15.0.2
+=======
+Built-By: kwg94
+>>>>>>> 09ec1351bd72d0008be4fb02700613871d9bde1b
 Build-Jdk: 11.0.9.1
+>>>>>>> origin/main
+=======
+Built-By: Jin
+Build-Jdk: 11.0.9.1
+>>>>>>> 5e8a070b7c2369f7f87e3efc7fe1e26184fb80b8
 Created-By: Maven Integration for Eclipse
 
