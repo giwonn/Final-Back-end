@@ -25,6 +25,18 @@
 		ON A.MEMBER_EMAIL = B.MEMBER_EMAIL
 		WHERE STUDY_GROUP_ID = #{studyId}
 	</select>
+	
+	<insert id="studySignIn">
+		INSERT INTO STUDY_GROUP_MEMBER
+		VALUES(STUDY_GROUP_MEMBER_SEQ.NEXTVAL, #{studyId}, #{email}, 'waiting')
+	</insert>
+	
+	<delete id="studySignOut">
+		DELETE FROM STUDY_GROUP_MEMBER
+		WHERE MEMBER_EMAIL = #{email} AND STUDY_GROUP_ID = #{studyId} AND ROLE = 'waiting'
+	</delete>
+	
+	
 
 	
 

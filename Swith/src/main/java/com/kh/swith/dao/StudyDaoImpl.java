@@ -64,8 +64,13 @@ public class StudyDaoImpl implements StudyDao{
 
 	@Override
 	public int updateStudy(StudyDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int res = 0;
+		try {
+			res = sqlSession.update(NAMESPACE+ "updateStudy", dto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override

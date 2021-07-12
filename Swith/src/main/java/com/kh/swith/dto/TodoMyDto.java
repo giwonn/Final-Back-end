@@ -19,6 +19,7 @@ public class TodoMyDto {
 	private String content;
 	private int isdone;
 	private String memberemail;
+	private String membernickname;
 	private Date createdat;
 	private Date doneat;
 }

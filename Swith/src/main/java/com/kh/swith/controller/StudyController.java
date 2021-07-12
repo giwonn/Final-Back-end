@@ -99,4 +99,36 @@ public class StudyController {
 		return resList;
 	}
 	
+	@RequestMapping(value="study.do", method=RequestMethod.GET)
+	@ResponseBody
+	public Map selectOneStudy(@RequestParam("id") String id) {
+		Map res = new HashMap();
+		
+		StudyDto dto = new StudyDto();
+		dto = biz.selectOneStudy(Integer.parseInt(id));
+		int resid = dto.getStudygroupid();
+
+		if(resid != 0) {
+			res.put("study", dto);
+			res.put("success", "true");
+		}else {
+			res.put("success", "false");
+		}
+		
+		return res;
+	}
+	
+	@RequestMapping(value="study.do", method=RequestMethod.PUT)
+	@ResponseBody
+	public Map updateStudy(@RequestBody StudyDto dto) {
+		Map resMap = new HashMap();
+		
+		int res = biz.updateStudy(dto);
+		if(res > 0) {
+			resMap.put("success", "true");
+		}else {
+			resMap.put("success", "false");
+		}
+		return resMap;
+	}
 }

@@ -53,7 +53,6 @@
 				,#{studygrouppw}
 			</if>
 		)
-		
 	</insert>
 	
 	<select id="searchList" resultMap="studyMap" parameterType="String">
@@ -80,6 +79,7 @@
 			STUDY_GROUP_NAME, 
 			STUDY_GROUP_DESC, 
 			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_AREA,
 			STUDY_GROUP_LNG, 
 			STUDY_GROUP_LAT,
 			STUDY_GROUP_ADDR,
@@ -113,6 +113,7 @@
 			STUDY_GROUP_NAME, 
 			STUDY_GROUP_DESC, 
 			STUDY_GROUP_OFFLINE, 
+			STUDY_GROUP_AREA,
 			STUDY_GROUP_LNG, 
 			STUDY_GROUP_LAT,
 			STUDY_GROUP_ADDR,
@@ -122,7 +123,7 @@
 			SELECT 
 				STUDY_GROUP_ID
 			FROM STUDY_GROUP_MEMBER
-			WHERE MEMBER_EMAIL = #{memberemail}
+			WHERE MEMBER_EMAIL = #{memberemail} AND ROLE != 'waiting' 
 		)
 	</select>
 
@@ -140,7 +141,7 @@
 		)
 	</insert>
 	
-	<select id="selectStudyById" parameterType="int">
+	<select id="selectStudyById" parameterType="int" resultMap="studyMap">
 		SELECT 
 			STUDY_GROUP_ID, 
 			STUDY_GROUP_NAME, 
@@ -148,10 +149,23 @@
 			STUDY_GROUP_OFFLINE, 
 			STUDY_GROUP_LNG, 
 			STUDY_GROUP_LAT,
+			STUDY_GROUP_AREA,
 			STUDY_GROUP_ADDR,
 			STUDY_GROUP_ADMIN
 		FROM STUDY_GROUP
 		WHERE STUDY_GROUP_ID = #{studygroupid}
 	</select>
+
+	<update id="updateStudy" parameterType="StudyDto">
+		UPDATE STUDY_GROUP
+		<set>
+			STUDY_GROUP_NAME = #{studygroupname}, 
+			STUDY_GROUP_DESC = #{studygroupdesc}
+			<if test='studygrouppw != null and studygrouppw != ""'>			
+				, STUDY_GROUP_PW = #{studygrouppw}
+			</if>
+		</set>
+		WHERE STUDY_GROUP_ID = #{studygroupid}
+	</update>
 </mapper>
 

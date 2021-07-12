@@ -24,5 +24,20 @@ public class StudyMemberBizImpl implements StudyMemberBiz {
 		return groupstudyDao.studyGetList(studyId);
 	}
 
+	@Override
+	public int StudySignIn(StudyMemberDto dto) {
+		return groupstudyDao.StudySignIn(dto);
+	}
+
+	@Override
+	public int StudySignOut(StudyMemberDto dto) {
+		return groupstudyDao.StudySignOut(dto);
+	}
+
+	@Override
+	public int StudySignJoin(StudyMemberDto dto) {
+		return 0;
+	}
+
 
 }
