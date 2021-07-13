@@ -10,4 +10,6 @@ public interface MemberDao {
 	
 	public List<MemberDto> profileSelect(String email);
 	public int profileUpdate(MemberDto memberDto);
+	
+	public String selectMemberNickname(String email);
 }

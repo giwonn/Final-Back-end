@@ -53,5 +53,6 @@
 			FROM STUDY_GROUP_MEMBER
 			WHERE MEMBER_EMAIL = #{memberemail}
 		)
+	ORDER BY CREATED_AT DESC
 	</select> 
 </mapper>
