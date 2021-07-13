@@ -59,7 +59,7 @@ public class PaymentDaoImpl implements PaymentDao {
 	@Override
 	public int insert(PaymentDto dto) {
 		int res = 0;
-		
+		System.out.println(dto.getPaymentdate());
 		try {
 			res = sqlSession.insert(NAMESPACE+"insert", dto);
 		} catch(Exception e) {
