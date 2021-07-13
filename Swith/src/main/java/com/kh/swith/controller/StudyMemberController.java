@@ -31,10 +31,10 @@ public class StudyMemberController {
 		
 		logger.info("[GroupStudyController] groupStudySelectRole.do");
 		
-		System.out.println(dto.getEmail());
-		System.out.println(dto.getStudyId());
+		//System.out.println(dto.getEmail());
+		//System.out.println(dto.getStudyId());
 		String res = studymemberbiz.selectRole(dto);
-		System.out.println("role : " + res);
+		//System.out.println("role : " + res);
 		
 		return res;
 	}
@@ -45,7 +45,7 @@ public class StudyMemberController {
 		
 		logger.info("[GroupStudyController] groupStudygetList.do");
 		
-		System.out.println("스터디 번호 : " + dto.getStudyId());
+		//System.out.println("스터디 번호 : " + dto.getStudyId());
 		
 		return studymemberbiz.studyGetList(Integer.parseInt(dto.getStudyId()));
 	}
@@ -56,11 +56,11 @@ public class StudyMemberController {
 		
 		logger.info("[GroupStudyController] groupStudySignIn.do");
 		
-		System.out.println(dto.getEmail());
-		System.out.println(dto.getStudyId());
+		//System.out.println(dto.getEmail());
+		//System.out.println(dto.getStudyId());
 		
 		int res = studymemberbiz.StudySignIn(dto);
-		System.out.println("res의 값" + res);
+		//System.out.println("res의 값" + res);
 		
 		return res;
 	}
@@ -71,11 +71,11 @@ public class StudyMemberController {
 		
 		logger.info("[GroupStudyController] groupStudySignOut.do");
 		
-		System.out.println(dto.getEmail());
-		System.out.println(dto.getStudyId());
+		//System.out.println(dto.getEmail());
+		//System.out.println(dto.getStudyId());
 		int res = studymemberbiz.StudySignOut(dto);
 		
-		System.out.println("res의 값" + res);
+		//System.out.println("res의 값" + res);
 		return res;
 	}
 	
@@ -96,8 +96,8 @@ public class StudyMemberController {
 		
 		logger.info("[GroupStudyController] groupStudyJoin.do");
 		
-		System.out.println(dto.getEmail());
-		System.out.println(dto.getStudyId());
+		//System.out.println(dto.getEmail());
+		//System.out.println(dto.getStudyId());
 		
 		int res = studymemberbiz.StudyJoin(dto);
 		System.out.println("res의 값" + res);

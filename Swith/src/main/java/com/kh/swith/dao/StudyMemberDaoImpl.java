@@ -37,7 +37,7 @@ public class StudyMemberDaoImpl implements StudyMemberDao {
 			e.printStackTrace();
 		}
 		
-		System.out.println("listlistlist : " + list);
+		//System.out.println("listlistlist : " + list);
 		
 		return list;
 	}
@@ -46,8 +46,8 @@ public class StudyMemberDaoImpl implements StudyMemberDao {
 	public int StudySignIn(StudyMemberDto dto) {
 		int res = 0;
 		
-		System.out.println("이메일 " + dto.getEmail());
-		System.out.println("스터디아이디 " + dto.getStudyId());
+		//System.out.println("이메일 " + dto.getEmail());
+		//System.out.println("스터디아이디 " + dto.getStudyId());
 		try {
 			res = sqlSession.insert("swith.studymembermapper.studySignIn",dto);
 		} catch (Exception e) {
@@ -61,8 +61,8 @@ public class StudyMemberDaoImpl implements StudyMemberDao {
 	public int StudySignOut(StudyMemberDto dto) {
 		int res = 0;
 		
-		System.out.println("이메일 " + dto.getEmail());
-		System.out.println("스터디아이디 " + dto.getStudyId());
+		//System.out.println("이메일 " + dto.getEmail());
+		//System.out.println("스터디아이디 " + dto.getStudyId());
 		try {
 			res = sqlSession.delete("swith.studymembermapper.studySignOut",dto);
 		} catch (Exception e) {
