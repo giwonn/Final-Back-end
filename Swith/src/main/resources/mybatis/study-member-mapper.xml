@@ -5,7 +5,7 @@
 	<resultMap type="StudyMemberDto" id="studyMemberMap">
 		<result property="study_group_member_id" column="STUDY_GROUP_MEMBER_ID" />
 		<result property="study_group_id" column="STUDY_GROUP_ID" />
-		<result property="member_email" column="MEMBER_EMAIL" />
+		<result property="email" column="MEMBER_EMAIL" />
 		<result property="role" column="ROLE" />
 		<result property="member_nickname" column="MEMBER_NICKNAME" />
 		<result property="member_phonenumber" column="MEMBER_PHONENUMBER" />
@@ -23,7 +23,7 @@
 		FROM MEMBER A 
 		FULL OUTER JOIN STUDY_GROUP_MEMBER B
 		ON A.MEMBER_EMAIL = B.MEMBER_EMAIL
-		WHERE STUDY_GROUP_ID = #{studyId}
+		WHERE STUDY_GROUP_ID = #{studyId} AND ROLE != 'waiting'
 	</select>
 	
 	<insert id="studySignIn">
@@ -36,6 +36,19 @@
 		WHERE MEMBER_EMAIL = #{email} AND STUDY_GROUP_ID = #{studyId} AND ROLE = 'waiting'
 	</delete>
 	
+	<select id="joingetList" parameterType="int" resultMap="studyMemberMap">
+		SELECT A.MEMBER_EMAIL, A.MEMBER_NICKNAME, A.MEMBER_LOC, A.MEMBER_PHONENUMBER, B.ROLE
+		FROM MEMBER A 
+		FULL OUTER JOIN STUDY_GROUP_MEMBER B
+		ON A.MEMBER_EMAIL = B.MEMBER_EMAIL
+		WHERE STUDY_GROUP_ID = #{studyId} AND ROLE = 'waiting'
+	</select>
+	
+	<update id="studyJoin">
+		UPDATE STUDY_GROUP_MEMBER
+		SET ROLE='user'
+		WHERE MEMBER_EMAIL = #{email} AND STUDY_GROUP_ID = #{studyId} AND ROLE = 'waiting'
+	</update>
 	
 
 	
