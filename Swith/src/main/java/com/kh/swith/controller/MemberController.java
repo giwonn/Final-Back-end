@@ -60,9 +60,9 @@ public class MemberController {
 		
 		//email = email.split("%40")[0] + "@" + email.split("%40")[1];
 		//email = email.split("=")[0];
+		logger.info("[MemberController] profileSelect.do");
 		
-		System.out.println(memberDto.getEmail());
-		
+		//System.out.println(memberDto.getEmail());
 		List<MemberDto> list = new ArrayList<MemberDto>();
 
 		list = memberBiz.profileSelect(memberDto.getEmail());
@@ -77,7 +77,7 @@ public class MemberController {
 		
 		logger.info("[MemberController] profileUpdate.do");
 
-		System.out.println("update : " + dto.getEmail());
+		//System.out.println("update : " + dto.getEmail());
 		if (memberBiz.profileUpdate(dto) > 0) {
 			return true;
 		}

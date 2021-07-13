@@ -19,7 +19,7 @@ public class MemberDaoImpl implements MemberDao {
 	public String MemberSelect(String email) {
 		
 		String res = "";
-		System.out.println("biz : " +email);
+		//System.out.println("biz : " +email);
 		
 		try {
 			res = sqlSession.selectOne("swith.membermapper.selectOne",email);
