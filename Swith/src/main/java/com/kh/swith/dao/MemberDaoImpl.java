@@ -74,5 +74,16 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
+	@Override
+	public String selectMemberNickname(String email) {
+		String res = "";
+		try {
+			res = sqlSession.selectOne("swith.membermapper.selectNickname", email);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 
 }

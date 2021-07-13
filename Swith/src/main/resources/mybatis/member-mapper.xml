@@ -39,7 +39,11 @@
 		</set>
 		WHERE MEMBER_EMAIL = #{email}
 	</update>
-
-
+	
+	<select id="selectNickname" parameterType="String" resultType="String">
+		SELECT MEMBER_NICKNAME
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{email}
+	</select>
 </mapper>
 
