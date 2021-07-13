@@ -72,13 +72,30 @@ public class StudyMemberDaoImpl implements StudyMemberDao {
 	}
 
 	@Override
-	public int StudySignJoin(StudyMemberDto dto) {
-		int res = 0;
+	public List<StudyMemberDto> groupStudyWaitingList(int studyId) {
+List<StudyMemberDto> list = new ArrayList<StudyMemberDto>();
 		
 		try {
-
+			list = sqlSession.selectList("swith.studymembermapper.joingetList", studyId);
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("listlistlist : " + list);
+		
+		return list;
+	}
 
+	@Override
+	public int StudyJoin(StudyMemberDto dto) {
+int res = 0;
+		
+		System.out.println("이메일 " + dto.getEmail());
+		System.out.println("스터디아이디 " + dto.getStudyId());
+		try {
+			res = sqlSession.update("swith.studymembermapper.studyJoin",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return res;
 	}

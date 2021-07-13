@@ -35,9 +35,16 @@ public class StudyMemberBizImpl implements StudyMemberBiz {
 	}
 
 	@Override
-	public int StudySignJoin(StudyMemberDto dto) {
-		return 0;
+	public List<StudyMemberDto> groupStudyWaitingList(int studyId) {
+		return groupstudyDao.groupStudyWaitingList(studyId);
 	}
+
+	@Override
+	public int StudyJoin(StudyMemberDto dto) {
+		return groupstudyDao.StudyJoin(dto);
+	}
+
+	
 
 
 }

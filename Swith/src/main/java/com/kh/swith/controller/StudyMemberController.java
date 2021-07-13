@@ -79,18 +79,28 @@ public class StudyMemberController {
 		return res;
 	}
 	
+	@RequestMapping(value="groupStudyWaitingList.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<StudyMemberDto> StudySignJoin(@RequestBody StudyMemberDto dto){
+		
+		logger.info("[GroupStudyController] groupStudyWaitingList.do");
+		
+		System.out.println("스터디 번호 : " + dto.getStudyId());
+		
+		return studymemberbiz.groupStudyWaitingList(Integer.parseInt(dto.getStudyId()));
+	}
+	
 	@RequestMapping(value="groupStudyJoin.do", method = RequestMethod.POST)
 	@ResponseBody
-	public int groupStudySignJoin(@RequestBody StudyMemberDto dto) {
+	public int groupStudyJoin(@RequestBody StudyMemberDto dto) {
 		
-		logger.info("[GroupStudyController] groupStudySignJoin.do");
+		logger.info("[GroupStudyController] groupStudyJoin.do");
 		
 		//System.out.println(dto.getEmail());
 		//System.out.println(dto.getStudyId());
 		
-		int res = 1;
-//		String res = studymemberbiz.selectRole(dto);
-//		System.out.println("role : " + res);
+		int res = studymemberbiz.StudyJoin(dto);
+		System.out.println("res의 값" + res);
 		
 		return res;
 	}

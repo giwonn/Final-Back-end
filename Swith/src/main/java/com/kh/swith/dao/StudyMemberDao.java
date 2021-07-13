@@ -10,6 +10,7 @@ public interface StudyMemberDao {
 	public List<StudyMemberDto> studyGetList(int studyId);
 	public int StudySignIn(StudyMemberDto dto);
 	public int StudySignOut(StudyMemberDto dto);
-	public int StudySignJoin(StudyMemberDto dto);
+	public List<StudyMemberDto> groupStudyWaitingList(int studyId);
+	public int StudyJoin(StudyMemberDto dto);
 
 }
