@@ -40,10 +40,11 @@ public class FeedController {
 	}
 	@RequestMapping(value="/feed.do", method=RequestMethod.GET)
 	@ResponseBody
-	public Map selectFeeds(@RequestHeader("email")String email) {
+	public Map selectFeeds(@RequestHeader("Email")String email) {
 		Map map = new HashMap();
-		List list = new ArrayList<FeedDto>();
+		List<FeedDto> list = new ArrayList<FeedDto>();
 		list = dao.selectFeeds(email);
+		
 		map.put("list", list);
 		return map;
 	}

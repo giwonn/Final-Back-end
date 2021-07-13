@@ -46,7 +46,7 @@ public class TodoMyController {
 		}
 		// ========= 이메일 세팅 후 업로드 
 		dto.setMemberemail(email);
-		System.out.println(dto.getTitle());
+//		System.out.println(dto.getTitle());
 		res = biz.uploadMyTodo(dto);
 		
 		if(res > 0) {
@@ -117,13 +117,15 @@ public class TodoMyController {
 		if(res > 0) {
 			map.put("success" , "true");
 			//============ toggle todo성공 ========//
+			if(todoDto.getIsdone() == 0 ) {
+				FeedDto feedDto = new FeedDto();
+				
+				feedDto.setMemberemail(todoDto.getMemberemail());
+				feedDto.setFeedcontent( todoDto.getMembernickname() + "님이 " + todoDto.getContent() + "을 성공하셨습니다. ");
 			
-			FeedDto feedDto = new FeedDto();
-			
-			feedDto.setMemberemail(todoDto.getMemberemail());
-			feedDto.setFeedcontent( todoDto.getMembernickname() + "님이 " + todoDto.getContent() + "을 성공하셨습니다. ");
-			
-			dao.insertFeed(feedDto);
+				dao.insertFeed(feedDto);
+			}
+	
 			map.put("id" ,id);
 		}else {
 			map.put("success", "false");

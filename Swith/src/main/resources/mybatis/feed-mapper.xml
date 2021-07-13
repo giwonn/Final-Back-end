@@ -39,7 +39,7 @@
 	END<![CDATA[;]]>
 	</insert>
 	
-	<select id="selectFeeds" resultType="FeedDto" parameterType="String">
+	<select id="selectFeeds" resultMap="feedMap" parameterType="String">
 	SELECT 
 		FEED_ID,
 		FEED_CONTENT,
@@ -53,6 +53,5 @@
 			FROM STUDY_GROUP_MEMBER
 			WHERE MEMBER_EMAIL = #{memberemail}
 		)
-		AND MEMBER_EMAIL != #{memberemail} 
 	</select> 
 </mapper>
