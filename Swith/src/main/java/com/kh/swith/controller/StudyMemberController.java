@@ -49,4 +49,49 @@ public class StudyMemberController {
 		
 		return studymemberbiz.studyGetList(Integer.parseInt(dto.getStudyId()));
 	}
+	
+	@RequestMapping(value="groupStudySignIn.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int groupStudySignIn(@RequestBody StudyMemberDto dto) {
+		
+		logger.info("[GroupStudyController] groupStudySignIn.do");
+		
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getStudyId());
+		
+		int res = studymemberbiz.StudySignIn(dto);
+		System.out.println("res의 값" + res);
+		
+		return res;
+	}
+	
+	@RequestMapping(value="groupStudySignOut.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int groupStudySignOut(@RequestBody StudyMemberDto dto) {
+		
+		logger.info("[GroupStudyController] groupStudySignOut.do");
+		
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getStudyId());
+		int res = studymemberbiz.StudySignOut(dto);
+		
+		System.out.println("res의 값" + res);
+		return res;
+	}
+	
+	@RequestMapping(value="groupStudyJoin.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int groupStudySignJoin(@RequestBody StudyMemberDto dto) {
+		
+		logger.info("[GroupStudyController] groupStudySignJoin.do");
+		
+		System.out.println(dto.getEmail());
+		System.out.println(dto.getStudyId());
+		
+		int res = 1;
+//		String res = studymemberbiz.selectRole(dto);
+//		System.out.println("role : " + res);
+		
+		return res;
+	}
 }

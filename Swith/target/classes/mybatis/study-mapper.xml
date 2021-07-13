@@ -67,6 +67,7 @@
 			STUDY_GROUP_PW
 		FROM STUDY_GROUP
 		WHERE 1=1
+		AND STUDY_GROUP_OFFLINE = 'N'
 		AND (STUDY_GROUP_NAME LIKE '%'||#{searched}||'%')
 		ORDER BY STUDY_GROUP_ID DESC
 	</select>
@@ -122,7 +123,7 @@
 			SELECT 
 				STUDY_GROUP_ID
 			FROM STUDY_GROUP_MEMBER
-			WHERE MEMBER_EMAIL = #{memberemail}
+			WHERE MEMBER_EMAIL = #{memberemail} AND ROLE != 'waiting' 
 		)
 	</select>
 
