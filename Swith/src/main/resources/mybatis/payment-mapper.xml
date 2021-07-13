@@ -65,8 +65,6 @@
 		FROM PAYMENT
 		WHERE
 		MEMBER_EMAIL = #{email}
-		AND
-		PAYMENT_DATE >= SYSDATE-30
 	</select>
 
 
