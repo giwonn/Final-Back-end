@@ -18,7 +18,6 @@ public class MemberDto {
 	private String intro;
 	private String location;
 	private String image;
-
 }
 
 
