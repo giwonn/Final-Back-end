@@ -22,6 +22,23 @@
 		INSERT INTO MEMBER (MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PHONENUMBER, MEMBER_LOC, MEMBER_IMG, MEMBER_INTRO)
 		VALUES(#{email}, #{nickName}, #{phoneNumber}, #{location}, NULL, #{intro})
 	</insert>
+	
+	<select id="profileSelect" parameterType="String" resultMap="memberMap">
+		SELECT MEMBER_EMAIL, MEMBER_NICKNAME, MEMBER_PHONENUMBER, MEMBER_LOC, MEMBER_IMG, MEMBER_INTRO
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{email}
+	</select>
+	
+	<update id="profileUpdate" parameterType="MemberDto">
+		UPDATE MEMBER
+		<set>
+			MEMBER_NICKNAME = #{nickName},
+			MEMBER_PHONENUMBER = #{phoneNumber},
+			MEMBER_LOC = #{location},
+			MEMBER_INTRO = #{intro}
+		</set>
+		WHERE MEMBER_EMAIL = #{email}
+	</update>
 
 
 </mapper>
