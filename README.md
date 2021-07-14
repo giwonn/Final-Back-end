@@ -16,8 +16,10 @@ Commit 규칙
 
 # Front-end
 ---
-[프론트 서버 (React)](https://github.com/gareen9342/Final-Front-end)   
-위 링크로 접속하시면 React로 구현한 프론트엔드단을 보실 수 있습니다~!
+[프론트 서버 (React)](http://qclass.iptime.org:3000)  
+[프론트 서버 Github](https://github.com/gareen9342/Final-Front-end)  
+위 링크로 접속하시면 React로 구현한 프론트엔드단을 보실 수 있습니다~!  
+백엔드와 연결되어 있어 바로 테스트 가능합니다~  
 
 
 # File Setting
