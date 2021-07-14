@@ -4,11 +4,20 @@
 통장잔고 2조의 백엔드!
 
 
+# Commit 규칙
+---
+Commit 규칙
+주요사항 : 제목
+
+추가 🐳
+수정 ⭐
+삭제 💥
+
+
 # Front-end
 ---
-https://github.com/gareen9342/Final-Front-end
+[프론트 서버 (React)](https://github.com/gareen9342/Final-Front-end)   
 위 링크로 접속하시면 React로 구현한 프론트엔드단을 보실 수 있습니다~!
-
 
 
 # File Setting
